@@ -32,5 +32,5 @@ public class Payment {
 
 
     @OneToMany(mappedBy = "payment")
-    private List<Order> orders;
+    private List<Bill> bills;
 }

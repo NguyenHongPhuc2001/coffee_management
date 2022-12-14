@@ -1,5 +1,6 @@
 package com.axonactive.coffeemanagement.entity;
 
+import com.axonactive.coffeemanagement.utils.Enum.GenderEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,12 +31,11 @@ public class Staff {
     @Column(name = "staff_age", nullable = false, length = 2)
     @Size(max = 2)
     @NotNull(message = "The staffAge can't be null !!!")
-    private String staffAge;
+    private Integer staffAge;
 
     @Column(name = "staff_address", length = 200)
     @Size(max = 200)
     private String staffAddress;
-
 
     @Column(name = "staff_image")
     private String staffImage;
@@ -45,12 +45,19 @@ public class Staff {
     @Size(max = 10)
     private String staffPhone;
 
-    @Column(name = "staff_sex", nullable = false)
+    @Column(name = "staff_gender", nullable = false)
     @NotNull(message = "The staffSex can't be null !!!")
-    private String staffSex;
+    @Enumerated(value = EnumType.STRING)
+    private GenderEnum staffGender;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-    @OneToMany(mappedBy = "order")
-    private List<Order> orders;
+    @OneToMany(mappedBy = "staff")
+    private List<WorkSchedule> workSchedules;
+
+    @OneToMany(mappedBy = "staff")
+    private List<Bill> bills;
 
 }

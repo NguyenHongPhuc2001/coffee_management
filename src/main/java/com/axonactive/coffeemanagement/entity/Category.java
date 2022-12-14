@@ -28,11 +28,12 @@ public class Category {
     private String categoryName;
 
 
-    @Column(name = "menu_amount", length = 3)
+    @Column(name = "amount", length = 3)
     @Size(max = 3)
-    private Integer menuAmount;
+    private Integer amount;
 
 
     @OneToMany(mappedBy = "category")
-    private List<Menu> menus;
+    private List<FoodAndDrink> foodAndDrinks;
+
 }

@@ -33,4 +33,8 @@ public class Role {
 
     @OneToMany(mappedBy = "role")
     private List<Account> accounts;
+
+
+    @OneToMany(mappedBy = "role")
+    private List<Staff> staffs;
 }

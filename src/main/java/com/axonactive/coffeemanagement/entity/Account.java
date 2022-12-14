@@ -21,7 +21,7 @@ public class Account {
     @Column(name = "account_id")
     private Long accountId;
 
-    @Column(name = "account_username",length = 100, nullable = false)
+    @Column(name = "account_username",length = 100, nullable = false, unique = true)
     @NotNull(message = "The accountUsername can't be null !!!")
     @Size(max = 100)
     private String accountUsername;
