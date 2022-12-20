@@ -1,4 +1,4 @@
-package com.axonactive.coffee_management.entity;
+package com.axonactive.coffeemanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,18 +19,18 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id")
-    private Long accountId;
+    private Long id;
 
-    @Column(name = "account_username",length = 100, nullable = false)
-    @NotNull(message = "The accountUsername can't be null !!!")
+    @Column(name = "account_username",length = 100, nullable = false, unique = true)
+    @NotNull(message = "The username can't be null !!!")
     @Size(max = 100)
-    private String accountUsername;
+    private String username;
 
 
     @Column(name = "account_password", length = 50, nullable = false)
-    @NotNull(message = "The accountPassword can't be null !!!")
+    @NotNull(message = "The password can't be null !!!")
     @Size(max = 50)
-    private String accountPassword;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id")

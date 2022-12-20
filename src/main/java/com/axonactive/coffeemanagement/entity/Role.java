@@ -1,4 +1,4 @@
-package com.axonactive.coffee_management.entity;
+package com.axonactive.coffeemanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,17 +19,15 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private Long roleId;
+    private Long id;
 
     @Column(name = "role_name", length = 100, nullable = false)
     @NotNull(message = "The roleName can't be null !!!")
     @Size(max = 100)
-    private String roleName;
+    private String name;
 
     @Column(name = "role_description")
-    private String roleDescription;
+    private String description;
 
 
-    @OneToMany(mappedBy = "role")
-    private List<Account> accounts;
 }

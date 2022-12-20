@@ -1,4 +1,4 @@
-package com.axonactive.coffee_management.entity;
+package com.axonactive.coffeemanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,18 +19,15 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
-    private Long paymentId;
+    private Long id;
 
-    @Column(name = "payment_name", length = 100, nullable = false)
+    @Column(length = 100, nullable = false)
     @NotNull(message = "The paymentName can't be null !!!")
     @Size(max = 100)
-    private String paymentName;
+    private String name;
 
-    @Column(name = "payment_image")
-    private String paymentImage;
-
+    private String image;
 
     @OneToMany(mappedBy = "payment")
-    private List<Order> orders;
+    private List<Bill> bills;
 }

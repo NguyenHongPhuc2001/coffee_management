@@ -1,4 +1,4 @@
-package com.axonactive.coffee_management.entity;
+package com.axonactive.coffeemanagement.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -20,19 +20,15 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Long categoryId;
+    private Long id;
 
     @Column(name = "category_name", length = 100, nullable = false)
     @NotNull(message = "The categoryName can't be null !!!")
     @Size(max = 100)
-    private String categoryName;
+    private String name;
 
-
-    @Column(name = "menu_amount", length = 3)
+    @Column(name = "amount", length = 3)
     @Size(max = 3)
-    private Integer menuAmount;
+    private Integer amount;
 
-
-    @OneToMany(mappedBy = "category")
-    private List<Menu> menus;
 }
