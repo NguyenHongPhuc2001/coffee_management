@@ -1,4 +1,4 @@
-package com.axonactive.coffeemanagement.entity;
+package com.axonactive.coffee_management.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.List;
 
 @Data

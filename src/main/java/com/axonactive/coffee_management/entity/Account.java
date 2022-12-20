@@ -1,4 +1,4 @@
-package com.axonactive.coffeemanagement.entity;
+package com.axonactive.coffee_management.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.axonactive.coffeemanagement.entity;
+package com.axonactive.coffee_management.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -54,7 +54,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "table_id")
-    private com.axonactive.coffeemanagement.entity.Table table;
+    private com.axonactive.coffee_management.entity.Table table;
 
 
     @OneToMany(mappedBy = "order")

@@ -1,0 +1,10 @@
+com\axonactive\coffeemanagement\entity\Account.class
+com\axonactive\coffeemanagement\entity\Role.class
+com\axonactive\coffeemanagement\entity\Table.class
+com\axonactive\coffeemanagement\entity\Menu.class
+com\axonactive\coffeemanagement\entity\Payment.class
+com\axonactive\coffeemanagement\entity\Customer.class
+com\axonactive\coffeemanagement\entity\Order.class
+com\axonactive\coffeemanagement\entity\Orderdetail.class
+com\axonactive\coffeemanagement\entity\Staff.class
+com\axonactive\coffeemanagement\entity\Category.class
