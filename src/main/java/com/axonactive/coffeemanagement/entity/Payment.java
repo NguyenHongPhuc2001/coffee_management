@@ -27,7 +27,4 @@ public class Payment {
     private String name;
 
     private String image;
-
-    @OneToMany(mappedBy = "payment")
-    private List<Bill> bills;
 }

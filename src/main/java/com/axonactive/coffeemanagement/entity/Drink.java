@@ -1,5 +1,6 @@
 package com.axonactive.coffeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,5 +35,11 @@ public class Drink {
     private String image;
 
     private String description;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonBackReference
+    private Category category;
 
 }

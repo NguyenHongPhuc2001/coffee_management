@@ -30,9 +30,6 @@ public class BarTable {
     @Null(message = "The numberSeat can't be null !")
     private Integer numberSeat;
 
-
     @Enumerated(EnumType.STRING)
     private BarTableStatusEnum status;
-
-
 }

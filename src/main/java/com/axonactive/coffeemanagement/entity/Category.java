@@ -31,4 +31,9 @@ public class Category {
     @Size(max = 3)
     private Integer amount;
 
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+    private List<Food> foods;
+
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+    private List<Drink> drinks;
 }
