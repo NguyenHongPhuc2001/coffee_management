@@ -1,4 +1,4 @@
 package com.axonactive.coffeemanagement.service.mapper;
 
-public class PromotionMapper {
+public interface PromotionMapper {
 }

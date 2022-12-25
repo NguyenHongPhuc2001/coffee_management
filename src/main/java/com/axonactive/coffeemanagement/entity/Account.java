@@ -21,13 +21,12 @@ public class Account {
     @Column(name = "account_id")
     private Long id;
 
-    @Column(name = "account_username",length = 100, nullable = false, unique = true)
+    @Column(length = 100, nullable = false, unique = true)
     @NotNull(message = "The username can't be null !!!")
     @Size(max = 100)
     private String username;
 
-
-    @Column(name = "account_password", length = 50, nullable = false)
+    @Column( length = 50, nullable = false)
     @NotNull(message = "The password can't be null !!!")
     @Size(max = 50)
     private String password;

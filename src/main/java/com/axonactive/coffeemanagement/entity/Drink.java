@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
@@ -17,19 +18,20 @@ import javax.validation.constraints.Size;
 public class Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "drink_id")
     private Long id;
 
     @Column(nullable = false,length = 100)
     @Size(max = 100)
-    @Null(message = "The name of drink can't be null !")
+    @NotNull(message = "The name of drink can't be null !")
     private String name;
 
     @Column(nullable = false)
-    @Null(message = "The current price of drink can't be null !")
+    @NotNull(message = "The current price of drink can't be null !")
     private Double currentPrice;
 
     @Column(nullable = false)
-    @Null(message = "The old price of drink can't be null !")
+    @NotNull(message = "The old price of drink can't be null !")
     private Double oldPrice;
 
     private String image;
@@ -38,7 +40,7 @@ public class Drink {
 
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "category_id")
     @JsonBackReference
     private Category category;
 

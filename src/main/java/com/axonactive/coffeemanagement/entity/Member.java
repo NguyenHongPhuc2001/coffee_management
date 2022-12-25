@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -14,15 +14,18 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "member")
 public class Member {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
 
-
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
+    @NotNull(message = "The memberPhone can't be null !!!")
     @Size(max = 10)
-    @Null(message = "The member phone can't be null !")
     private String phone;
+
     private String name;
+
     private Integer bonus;
 }

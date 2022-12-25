@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
@@ -18,17 +20,16 @@ public class BarTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bar_table_id")
     private Long id;
 
     @Column( nullable = false, unique = true, length = 2)
-    @Null(message = "The number of bar_table can't be null !")
-    @Size(max = 2)
+    @NotNull(message = "The number of bar_table can't be null !")
     private Integer number;
 
-    @Column(name = "number_seat", nullable = false, length = 2)
-    @Size(max = 2)
-    @Null(message = "The numberSeat can't be null !")
-    private Integer numberSeat;
+    @Column(name = "number_of_seat", nullable = false, length = 2)
+    @NotNull(message = "The numberSeat can't be null !")
+    private Integer numberOfSeat;
 
     @Enumerated(EnumType.STRING)
     private BarTableStatusEnum status;

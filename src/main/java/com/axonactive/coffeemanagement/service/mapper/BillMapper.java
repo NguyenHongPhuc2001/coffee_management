@@ -1,4 +1,4 @@
 package com.axonactive.coffeemanagement.service.mapper;
 
-public class BillMapper {
+public interface BillMapper {
 }

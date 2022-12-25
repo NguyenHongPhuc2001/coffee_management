@@ -21,13 +21,10 @@ public class Role {
     @Column(name = "role_id")
     private Long id;
 
-    @Column(name = "role_name", length = 100, nullable = false)
+    @Column(length = 100, nullable = false)
     @NotNull(message = "The roleName can't be null !!!")
     @Size(max = 100)
     private String name;
 
-    @Column(name = "role_description")
     private String description;
-
-
 }

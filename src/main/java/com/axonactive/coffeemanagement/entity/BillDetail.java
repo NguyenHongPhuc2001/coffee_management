@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 @Data
@@ -17,18 +18,19 @@ public class BillDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bill_detail_id")
     private Long id;
 
     @Column(nullable = false)
-    @Null(message = "The quantity in billDetail can't be null !")
+    @NotNull(message = "The quantity in billDetail can't be null !")
     private Integer quantity;
 
     @Column(nullable = false)
-    @Null(message = "The total in billDetail can't be null !")
+    @NotNull(message = "The total in billDetail can't be null !")
     private Double total;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "bill_id")
     @JsonBackReference
     private Bill bill;
 }

@@ -22,18 +22,18 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-    @Column(name = "category_name", length = 100, nullable = false)
+    @Column(length = 100, nullable = false)
     @NotNull(message = "The categoryName can't be null !!!")
     @Size(max = 100)
     private String name;
 
-    @Column(name = "amount", length = 3)
+    @Column(length = 3)
     @Size(max = 3)
     private Integer amount;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
-    private List<Food> foods;
-
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
-    private List<Drink> drinks;
+//    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+//    private List<Food> foods;
+//
+//    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+//    private List<Drink> drinks;
 }

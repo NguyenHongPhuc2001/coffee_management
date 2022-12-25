@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.List;
@@ -20,10 +21,11 @@ import java.util.List;
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bill_id")
     private Long id;
 
     @Column(nullable = false)
-    @Null(message = "The total of bill can't be null !")
+    @NotNull(message = "The total of bill can't be null !")
     private Double total;
 
     @Column(name = "created_date")
@@ -38,25 +40,24 @@ public class Bill {
     private BillStatusEnum status;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "bar_table_id")
     private BarTable barTable;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "payment_id")
     private Payment payment;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "account_id")
     private Account account;
-
 
     @OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
     private List<BillDetail> billDetails;

@@ -1,4 +1,4 @@
 package com.axonactive.coffeemanagement.service.mapper;
 
-public class CategoryMapper {
+public interface CategoryMapper {
 }

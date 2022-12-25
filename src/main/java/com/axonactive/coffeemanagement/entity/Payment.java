@@ -19,6 +19,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
     private Long id;
 
     @Column(length = 100, nullable = false)
