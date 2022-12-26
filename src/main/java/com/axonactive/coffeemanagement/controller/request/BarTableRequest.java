@@ -13,5 +13,5 @@ public class BarTableRequest {
 
     private Integer numberOfSeat;
 
-    private BarTableStatusEnum status;
+    private String status;
 }

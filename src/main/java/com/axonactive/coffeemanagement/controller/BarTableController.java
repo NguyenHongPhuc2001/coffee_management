@@ -35,6 +35,7 @@ public class BarTableController {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
+    @Path("/table_status")
     public Response getByStatus(@QueryParam("status") String status) {
         return Response.ok().entity(barTableService.findByStatus(status)).status(Response.Status.FOUND).build();
     }

@@ -24,9 +24,11 @@ com\axonactive\coffeemanagement\service\mapper\BarTableMapper.class
 com\axonactive\coffeemanagement\service\mapper\BarTableMapperImpl.class
 com\axonactive\coffeemanagement\service\dto\RoleDto.class
 com\axonactive\coffeemanagement\service\impl\PromotionServiceImpl.class
+com\axonactive\coffeemanagement\utils\Converter\StringToEnumConverter.class
 com\axonactive\coffeemanagement\controller\AccountController.class
 com\axonactive\coffeemanagement\service\mapper\AccountMapper.class
 com\axonactive\coffeemanagement\dao\FoodDao.class
+com\axonactive\coffeemanagement\service\mapper\PromotionMapperImpl.class
 com\axonactive\coffeemanagement\controller\DrinkController.class
 com\axonactive\coffeemanagement\service\mapper\RoleMapper.class
 com\axonactive\coffeemanagement\entity\Category.class
@@ -44,6 +46,7 @@ com\axonactive\coffeemanagement\dao\impl\PromotionDaoImpl.class
 com\axonactive\coffeemanagement\dao\impl\CategoryDaoImpl.class
 com\axonactive\coffeemanagement\controller\RestConfiguration.class
 com\axonactive\coffeemanagement\service\mapper\BillMapper.class
+com\axonactive\coffeemanagement\controller\request\PromotionRequest.class
 com\axonactive\coffeemanagement\service\dto\AccountDto.class
 com\axonactive\coffeemanagement\dao\MemberDao.class
 com\axonactive\coffeemanagement\service\impl\AccountServiceImpl.class

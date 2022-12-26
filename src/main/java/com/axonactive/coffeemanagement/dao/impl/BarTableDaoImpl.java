@@ -55,7 +55,7 @@ public class BarTableDaoImpl implements BarTableDao {
             barTable.setNumberOfSeat(barTableRequest.getNumberOfSeat());
         }
         if (barTableRequest.getStatus() != null) {
-                barTable.setStatus(barTableRequest.getStatus());
+                barTable.setStatus(BarTableStatusEnum.valueOf(barTableRequest.getStatus()));
         }
         return em.merge(barTable);
     }
@@ -69,7 +69,7 @@ public class BarTableDaoImpl implements BarTableDao {
     }
 
     @Override
-    public List<BarTable> findByStatus(String barTableStatus) {
+    public List<BarTable> findByStatus(BarTableStatusEnum barTableStatus) {
         return em.createQuery("SELECT t FROM BarTable t WHERE t.status = :barTableStatus", BarTable.class)
                 .setParameter("barTableStatus", barTableStatus)
                 .getResultList();

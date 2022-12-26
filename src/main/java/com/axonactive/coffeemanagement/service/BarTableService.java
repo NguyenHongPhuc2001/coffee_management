@@ -3,6 +3,7 @@ package com.axonactive.coffeemanagement.service;
 import com.axonactive.coffeemanagement.controller.request.BarTableRequest;
 
 import com.axonactive.coffeemanagement.service.dto.BarTableDto;
+import com.axonactive.coffeemanagement.utils.Enum.BarTableStatusEnum;
 
 import java.util.List;
 
