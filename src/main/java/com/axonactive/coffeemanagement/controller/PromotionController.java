@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Date;
 
 @Stateless
 @Path(value = PromotionController.PATH)
@@ -23,7 +24,6 @@ public class PromotionController {
         return Response.ok().entity(promotionService.findAll()).status(Response.Status.FOUND).build();
     }
 
-
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/{id}")
@@ -31,14 +31,12 @@ public class PromotionController {
         return Response.ok().entity(promotionService.findById(id)).status(Response.Status.FOUND).build();
     }
 
-
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/toDay")
-    public Response getByNotExpired(@QueryParam("toDay") String toDay) {
-        return Response.ok().entity(promotionService.findByNotExpired(toDay)).status(Response.Status.FOUND).build();
+    @Path("/expired")
+    public Response getByNotExpired() {
+        return Response.ok().entity(promotionService.findByNotExpired()).status(Response.Status.FOUND).build();
     }
-
 
     @POST
     @Produces({MediaType.APPLICATION_JSON})
@@ -54,7 +52,6 @@ public class PromotionController {
     public Response update(PromotionRequest promotionRequest, @PathParam("id") Long id) {
         return Response.ok().entity(promotionService.update(promotionRequest, id)).status(Response.Status.OK).build();
     }
-
 
     @DELETE
     @Path("/{id}")

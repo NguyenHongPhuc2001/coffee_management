@@ -12,5 +12,5 @@ public interface PromotionService {
     PromotionDto create(PromotionRequest promotionRequest);
     PromotionDto update(PromotionRequest promotionRequest, Long promotionId);
     void delete(Long promotionId);
-    List<PromotionDto> findByNotExpired(String toDay);
+    List<PromotionDto> findByNotExpired();
 }

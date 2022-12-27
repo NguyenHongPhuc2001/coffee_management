@@ -5,7 +5,6 @@ import com.axonactive.coffeemanagement.dao.BarTableDao;
 import com.axonactive.coffeemanagement.service.BarTableService;
 import com.axonactive.coffeemanagement.service.dto.BarTableDto;
 import com.axonactive.coffeemanagement.service.mapper.BarTableMapper;
-import com.axonactive.coffeemanagement.utils.Converter.StringToEnumConverter;
 import com.axonactive.coffeemanagement.utils.Enum.BarTableStatusEnum;
 
 import javax.ejb.Stateless;

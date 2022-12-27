@@ -8,7 +8,6 @@ import com.axonactive.coffeemanagement.service.mapper.PromotionMapper;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -48,14 +47,13 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
     @Override
-    public List<PromotionDto> findByNotExpired(String toDay) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
+    public List<PromotionDto> findByNotExpired() {
         try {
-            date = df.parse(toDay);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            return promotionMapper.toDtos(promotionDao.findByNotExpired());
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return promotionMapper.toDtos(promotionDao.findByNotExpired(date));
     }
 }

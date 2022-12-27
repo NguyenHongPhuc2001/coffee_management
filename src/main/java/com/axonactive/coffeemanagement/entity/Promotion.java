@@ -1,5 +1,6 @@
 package com.axonactive.coffeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
@@ -23,9 +25,9 @@ public class Promotion {
     @Column(name = "promotion_id")
     private Long id;
 
-    @Column(nullable = false, length = 3)
-    @Size(max = 3)
+    @Column(nullable = false)
     @NotNull(message = "The bonus of promotion can't be null !")
+    @Max(500)
     private Integer bonus;
 
     @Column(nullable = false)

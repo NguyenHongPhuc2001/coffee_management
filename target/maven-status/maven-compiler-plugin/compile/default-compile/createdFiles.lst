@@ -24,7 +24,6 @@ com\axonactive\coffeemanagement\service\mapper\BarTableMapper.class
 com\axonactive\coffeemanagement\service\mapper\BarTableMapperImpl.class
 com\axonactive\coffeemanagement\service\dto\RoleDto.class
 com\axonactive\coffeemanagement\service\impl\PromotionServiceImpl.class
-com\axonactive\coffeemanagement\utils\Converter\StringToEnumConverter.class
 com\axonactive\coffeemanagement\controller\AccountController.class
 com\axonactive\coffeemanagement\service\mapper\AccountMapper.class
 com\axonactive\coffeemanagement\dao\FoodDao.class
@@ -39,6 +38,7 @@ com\axonactive\coffeemanagement\service\PaymentService.class
 com\axonactive\coffeemanagement\service\FoodService.class
 com\axonactive\coffeemanagement\service\impl\BillServiceImpl.class
 com\axonactive\coffeemanagement\service\mapper\MemberMapper.class
+com\axonactive\coffeemanagement\service\mapper\CategoryMapperImpl.class
 com\axonactive\coffeemanagement\dao\BillDetailDao.class
 com\axonactive\coffeemanagement\service\RoleService.class
 com\axonactive\coffeemanagement\service\BillDetailService.class
@@ -57,6 +57,7 @@ com\axonactive\coffeemanagement\dao\CategoryDao.class
 com\axonactive\coffeemanagement\dao\impl\BarTableDaoImpl.class
 com\axonactive\coffeemanagement\entity\Role.class
 com\axonactive\coffeemanagement\service\mapper\PaymentMapperImpl.class
+com\axonactive\coffeemanagement\controller\request\CategoryRequest.class
 com\axonactive\coffeemanagement\dao\impl\BillDaoImpl.class
 com\axonactive\coffeemanagement\controller\request\MemberRequest.class
 com\axonactive\coffeemanagement\controller\BarTableController.class
@@ -96,6 +97,7 @@ com\axonactive\coffeemanagement\dao\impl\PaymentDaoImpl.class
 com\axonactive\coffeemanagement\entity\Payment.class
 com\axonactive\coffeemanagement\service\dto\BillDto.class
 com\axonactive\coffeemanagement\utils\Enum\BarTableStatusEnum.class
+com\axonactive\coffeemanagement\utils\Enum\CategoryTypeEnum.class
 com\axonactive\coffeemanagement\dao\RoleDao.class
 com\axonactive\coffeemanagement\dao\impl\MemberDaoImpl.class
 com\axonactive\coffeemanagement\service\dto\CategoryDto.class

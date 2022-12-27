@@ -1,12 +1,14 @@
 package com.axonactive.coffeemanagement.entity;
 
 
+import com.axonactive.coffeemanagement.utils.Enum.CategoryTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -27,9 +29,11 @@ public class Category {
     @Size(max = 100)
     private String name;
 
-    @Column(length = 3)
-    @Size(max = 3)
+    @Max(200)
     private Integer amount;
+
+    @Enumerated(EnumType.STRING)
+    private CategoryTypeEnum type;
 
 //    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
 //    private List<Food> foods;

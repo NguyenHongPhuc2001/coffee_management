@@ -56,6 +56,7 @@ E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\co
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\BarTableService.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\impl\PaymentServiceImpl.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\mapper\BillDetailMapper.java
+E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\request\CategoryRequest.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\dto\PaymentDto.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\dao\impl\BarTableDaoImpl.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\PaymentController.java
@@ -64,6 +65,7 @@ E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\co
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\BillDetailController.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\DrinkService.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\dto\DrinkDto.java
+E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\utils\Enum\CategoryTypeEnum.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\service\impl\DrinkServiceImpl.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\dao\impl\PromotionDaoImpl.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\entity\BillDetail.java
@@ -84,7 +86,6 @@ E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\co
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\BarTableController.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\MemberController.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\request\AccountRequest.java
-E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\utils\Converter\StringToEnumConverter.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\dao\impl\BillDaoImpl.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\CategoryController.java
 E:\AxonActive\Personal_Project\coffee_management\src\main\java\com\axonactive\coffeemanagement\controller\request\BarTableRequest.java

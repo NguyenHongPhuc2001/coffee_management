@@ -37,7 +37,7 @@ public class PromotionDaoImpl implements PromotionDao {
         Promotion promotion = new Promotion();
         if (promotionRequest.getPromotionValue() == null || promotionRequest.getBonus() == null
                 || promotionRequest.getPromotionValue() == 0 || promotionRequest.getName() == null ||
-                promotionRequest.getStartDate().before(new Date()) || promotionRequest.getEndDate().before(new Date())) {
+                promotionRequest.getStartDate() == null || promotionRequest.getEndDate() == null) {
             return null;
         }
         promotion.setPromotionValue(promotionRequest.getPromotionValue());
@@ -81,10 +81,10 @@ public class PromotionDaoImpl implements PromotionDao {
     }
 
     @Override
-    public List<Promotion> findByNotExpired(Date toDay) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return em.createQuery("SELECT p FROM Promotion p WHERE p.endDate >= :toDay", Promotion.class)
-                .setParameter("toDay",df.format(toDay))
+    public List<Promotion> findByNotExpired() {
+        Date day =new Date();
+        return em.createQuery("SELECT p FROM Promotion p WHERE p.endDate >= :day", Promotion.class)
+                .setParameter("day", day)
                 .getResultList();
     }
 }
