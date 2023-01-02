@@ -14,6 +14,7 @@ com\axonactive\coffeemanagement\service\AccountService.class
 com\axonactive\coffeemanagement\service\mapper\AccountMapperImpl.class
 com\axonactive\coffeemanagement\controller\BillController.class
 com\axonactive\coffeemanagement\controller\request\PaymentRequest.class
+com\axonactive\coffeemanagement\controller\DrinkAndCategoryController.class
 com\axonactive\coffeemanagement\service\mapper\CategoryMapper.class
 com\axonactive\coffeemanagement\service\mapper\RoleMapperImpl.class
 com\axonactive\coffeemanagement\entity\Bill.class
@@ -31,6 +32,7 @@ com\axonactive\coffeemanagement\service\mapper\PromotionMapperImpl.class
 com\axonactive\coffeemanagement\controller\DrinkController.class
 com\axonactive\coffeemanagement\service\mapper\RoleMapper.class
 com\axonactive\coffeemanagement\entity\Category.class
+com\axonactive\coffeemanagement\service\mapper\DrinkMapperImpl.class
 com\axonactive\coffeemanagement\controller\FoodController.class
 com\axonactive\coffeemanagement\entity\Drink.class
 com\axonactive\coffeemanagement\service\BarTableService.class
@@ -42,8 +44,8 @@ com\axonactive\coffeemanagement\service\mapper\CategoryMapperImpl.class
 com\axonactive\coffeemanagement\dao\BillDetailDao.class
 com\axonactive\coffeemanagement\service\RoleService.class
 com\axonactive\coffeemanagement\service\BillDetailService.class
-com\axonactive\coffeemanagement\controller\FoodGetByCategoryIdRequest.class
 com\axonactive\coffeemanagement\dao\impl\PromotionDaoImpl.class
+com\axonactive\coffeemanagement\controller\request\DrinkRequest.class
 com\axonactive\coffeemanagement\dao\impl\CategoryDaoImpl.class
 com\axonactive\coffeemanagement\controller\RestConfiguration.class
 com\axonactive\coffeemanagement\service\mapper\BillMapper.class
@@ -92,6 +94,7 @@ com\axonactive\coffeemanagement\dao\DrinkDao.class
 com\axonactive\coffeemanagement\service\impl\BillDetailServiceImpl.class
 com\axonactive\coffeemanagement\service\dto\DrinkDto.class
 com\axonactive\coffeemanagement\dao\impl\RoleDaoImpl.class
+com\axonactive\coffeemanagement\controller\FoodAndCategoryController.class
 com\axonactive\coffeemanagement\controller\RoleController.class
 com\axonactive\coffeemanagement\service\mapper\FoodMapperImpl.class
 com\axonactive\coffeemanagement\service\DrinkService.class

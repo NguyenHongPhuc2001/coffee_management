@@ -13,17 +13,14 @@ import javax.ws.rs.core.Response;
 @Path(value = AccountController.PATH)
 public class AccountController {
     public static final String PATH = "/accounts";
-
     @Inject
     private AccountService accountService;
-
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAll() {
         return Response.ok().entity(accountService.findAll()).status(Response.Status.FOUND).build();
     }
-
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})

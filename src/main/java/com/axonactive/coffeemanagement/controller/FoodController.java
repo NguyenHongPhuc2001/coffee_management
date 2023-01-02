@@ -1,5 +1,6 @@
 package com.axonactive.coffeemanagement.controller;
 
+import com.axonactive.coffeemanagement.controller.request.FoodRequest;
 import com.axonactive.coffeemanagement.service.FoodService;
 
 import javax.ejb.Stateless;
@@ -37,6 +38,29 @@ public class FoodController {
     }
 
 
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response create(FoodRequest foodRequest){
+        return Response.ok().entity(foodService.create(foodRequest)).status(Response.Status.CREATED).build();
+    }
+
+    @PUT
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("/{id}")
+    public Response update(FoodRequest foodRequest, @PathParam("id") Long foodId){
+        return Response.ok().entity(foodService.update(foodRequest,foodId)).status(Response.Status.OK).build();
+    }
+
+
+    @DELETE
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/{id}")
+    public Response update(@PathParam("id") Long foodId){
+        foodService.delete(foodId);
+        return Response.ok().status(Response.Status.OK).build();
+    }
 
 
 }

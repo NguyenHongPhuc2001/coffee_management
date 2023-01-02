@@ -3,6 +3,7 @@ package com.axonactive.coffeemanagement.dao.impl;
 import com.axonactive.coffeemanagement.controller.request.FoodRequest;
 import com.axonactive.coffeemanagement.dao.CategoryDao;
 import com.axonactive.coffeemanagement.dao.FoodDao;
+import com.axonactive.coffeemanagement.entity.Category;
 import com.axonactive.coffeemanagement.entity.Food;
 
 import javax.ejb.Stateless;
@@ -23,14 +24,14 @@ public class FoodDaoImpl implements FoodDao {
 
     @Override
     public Food findById(Long foodId) {
-        return (Food) em.createNativeQuery("SELECT * FROM food WHERE id = :foodId")
+        return (Food) em.createQuery("SELECT f FROM Food f WHERE f.id = :foodId")
                 .setParameter("foodId",foodId)
                 .getSingleResult();
     }
 
     @Override
     public List<Food> findAll() {
-        return em.createNativeQuery("SELECT * FROM food")
+        return em.createQuery("select F from Food f", Food.class)
                 .getResultList();
     }
 
@@ -63,7 +64,7 @@ public class FoodDaoImpl implements FoodDao {
         if(foodRequest.getOldPrice() !=null){
             food.setOldPrice(foodRequest.getOldPrice());
         }
-        if(foodRequest.getCategoryRequest().getId()!=null){
+        if(foodRequest.getCategoryRequest()!=null){
             food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
         }
         if(foodRequest.getDescription()!=null){
@@ -86,21 +87,21 @@ public class FoodDaoImpl implements FoodDao {
 
     @Override
     public List<Food> findByCategoryId(Long categoryId) {
-        return em.createNativeQuery("SELECT * FROM food WHERE category_id = :categoryId ORDER BY food_id", Food.class)
+        return em.createQuery("SELECT F FROM Food f WHERE f.category.id = :categoryId ORDER BY f.id", Food.class)
                 .setParameter("categoryId",categoryId)
                 .getResultList();
     }
 
     @Override
     public List<Food> findByName(String name) {
-        return em.createNativeQuery("SELECT * FROM food WHERE name LIKE :name ORDER BY food_id",Food.class)
+        return em.createQuery("SELECT f FROM Food f WHERE f.name LIKE :name ORDER BY f.id",Food.class)
                 .setParameter("name","%"+name+"%")
                 .getResultList();
     }
 
     @Override
     public List<Food> findByCurrentPriceBetween(Double startPrice, Double endPrice) {
-        return em.createNativeQuery("SELECT * FROM food WHERE currentprice >= :startPrice AND currentprice <= :endPrice ORDER BY food_id",Food.class)
+        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice ORDER BY f.id",Food.class)
                 .setParameter("startPrice",startPrice)
                 .setParameter("endPrice",endPrice)
                 .getResultList();
@@ -108,7 +109,7 @@ public class FoodDaoImpl implements FoodDao {
 
     @Override
     public List<Food> findByCurrentPriceBetweenAndCategory(Double startPrice, Double endPrice, Long categoryId) {
-        return em.createNativeQuery("SELECT * FROM food WHERE currentprice >= :startPrice AND currentprice <= :endPrice AND category_id = :categoryId", Food.class)
+        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice AND f.category.id = :categoryId", Food.class)
                 .setParameter("startPrice",startPrice)
                 .setParameter("endPrice",endPrice)
                 .setParameter("categoryId",categoryId)
