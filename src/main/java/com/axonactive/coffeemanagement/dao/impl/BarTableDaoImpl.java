@@ -32,9 +32,6 @@ public class BarTableDaoImpl implements BarTableDao {
     @Override
     public BarTable create(BarTableRequest barTableRequest) {
         BarTable barTable = new BarTable();
-        if (barTableRequest.getNumber() == null) {
-            return null;
-        }
         barTable.setNumber(barTableRequest.getNumber());
         barTable.setNumberOfSeat(barTableRequest.getNumberOfSeat());
         barTable.setStatus(BarTableStatusEnum.AVAILABLE);
@@ -45,18 +42,9 @@ public class BarTableDaoImpl implements BarTableDao {
     @Override
     public BarTable update(BarTableRequest barTableRequest, Long barTableId) {
         BarTable barTable = findById(barTableId);
-        if (barTable == null) {
-            return null;
-        }
-        if (barTableRequest.getNumber() != null) {
-            barTable.setNumber(barTableRequest.getNumber());
-        }
-        if (barTableRequest.getNumberOfSeat() != null) {
-            barTable.setNumberOfSeat(barTableRequest.getNumberOfSeat());
-        }
-        if (barTableRequest.getStatus() != null) {
-                barTable.setStatus(BarTableStatusEnum.valueOf(barTableRequest.getStatus()));
-        }
+        barTable.setNumber(barTableRequest.getNumber());
+        barTable.setNumberOfSeat(barTableRequest.getNumberOfSeat());
+        barTable.setStatus(BarTableStatusEnum.valueOf(barTableRequest.getStatus()));
         return em.merge(barTable);
     }
 

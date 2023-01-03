@@ -52,11 +52,6 @@ public class BillDaoImpl implements BillDao {
     @Override
     public Bill create(BillRequest billRequest) {
         Bill bill = new Bill();
-        if (billRequest.getAccountId() == null ||
-                billRequest.getBarTableId() == null ||
-                billRequest.getPaymentId() == null) {
-            return null;
-        }
         bill.setAccount(accountDao.findById(billRequest.getAccountId()));
         bill.setBarTable(barTableDao.findById(billRequest.getBarTableId()));
         bill.setPayment(paymentDao.findById(billRequest.getPaymentId()));

@@ -33,40 +33,22 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public Category create(CategoryRequest categoryRequest) {
         Category category = new Category();
-        if (categoryRequest.getName() == null) {
-            return null;
-        }
-        if (categoryRequest.getType() == null) {
-            return null;
-        }
-        category.setName(categoryRequest.getName());
+        category.setName(categoryRequest.getName().trim());
         if (categoryRequest.getAmount() == null) {
             category.setAmount(0);
         } else {
             category.setAmount(categoryRequest.getAmount());
         }
-        category.setType(CategoryTypeEnum.valueOf(categoryRequest.getType().toUpperCase()));
-
+        category.setType(CategoryTypeEnum.valueOf(categoryRequest.getType().toUpperCase().trim()));
         return em.merge(category);
     }
 
     @Override
     public Category update(CategoryRequest categoryRequest, Long categoryId) {
         Category category = findById(categoryId);
-        if (category == null) {
-            return null;
-        }
-
-        if (categoryRequest.getName() != null) {
-            category.setName(categoryRequest.getName());
-        }
-        if (categoryRequest.getAmount() != null) {
-            category.setAmount(categoryRequest.getAmount());
-        }
-        if(categoryRequest.getType()!=null){
-            category.setType(CategoryTypeEnum.valueOf(categoryRequest.getType().toUpperCase()));
-        }
-
+        category.setName(categoryRequest.getName().trim());
+        category.setAmount(categoryRequest.getAmount());
+        category.setType(CategoryTypeEnum.valueOf(categoryRequest.getType().toUpperCase().trim()));
         return em.merge(category);
     }
 
@@ -81,7 +63,7 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public List<Category> findByName(String categoryName) {
         return em.createQuery("SELECT c FROM Category c WHERE c.name LIKE :categoryName", Category.class)
-                .setParameter("categoryName","%" +categoryName + "%")
+                .setParameter("categoryName", "%" + categoryName + "%")
                 .getResultList();
     }
 

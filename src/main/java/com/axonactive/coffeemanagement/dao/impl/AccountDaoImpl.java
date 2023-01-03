@@ -39,8 +39,8 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public Account create(AccountRequest accountRequest) {
         Account account = new Account();
-        account.setUsername(accountRequest.getUsername());
-        account.setPassword(accountRequest.getPassword());
+        account.setUsername(accountRequest.getUsername().trim());
+        account.setPassword(accountRequest.getPassword().trim());
         Role role = roleDao.findById(accountRequest.getRoleId());
         account.setRole(role);
         return em.merge(account);
@@ -49,7 +49,7 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public Account changePassword(AccountRequest accountRequest, Long accountId) {
         Account account = findById(accountId);
-        account.setPassword(accountRequest.getPassword());
+        account.setPassword(accountRequest.getPassword().trim());
         return em.merge(account);
     }
 

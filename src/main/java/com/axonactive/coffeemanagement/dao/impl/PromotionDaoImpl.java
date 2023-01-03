@@ -34,16 +34,11 @@ public class PromotionDaoImpl implements PromotionDao {
     @Override
     public Promotion create(PromotionDto promotionDto) {
         Promotion promotion = new Promotion();
-        if (promotionDto.getPromotionValue() == null || promotionDto.getBonus() == null
-                || promotionDto.getPromotionValue() == 0 || promotionDto.getName() == null ||
-                promotionDto.getStartDate() == null || promotionDto.getEndDate() == null) {
-            return null;
-        }
         promotion.setPromotionValue(promotionDto.getPromotionValue());
         promotion.setBonus(promotionDto.getBonus());
         promotion.setStartDate(promotionDto.getStartDate());
         promotion.setEndDate(promotionDto.getEndDate());
-        promotion.setName(promotionDto.getName());
+        promotion.setName(promotionDto.getName().trim());
         return em.merge(promotion);
     }
 
@@ -53,21 +48,11 @@ public class PromotionDaoImpl implements PromotionDao {
         if (promotion == null) {
             return null;
         }
-        if (promotionDto.getPromotionValue() != null) {
-            promotion.setPromotionValue(promotionDto.getPromotionValue());
-        }
-        if (promotionDto.getBonus() != null) {
-            promotion.setBonus(promotionDto.getBonus());
-        }
-        if (promotionDto.getStartDate() != null) {
-            promotion.setStartDate(promotionDto.getStartDate());
-        }
-        if (promotionDto.getEndDate() != null) {
-            promotion.setEndDate(promotionDto.getEndDate());
-        }
-        if (promotionDto.getName() != null) {
-            promotion.setName(promotionDto.getName());
-        }
+        promotion.setPromotionValue(promotionDto.getPromotionValue());
+        promotion.setBonus(promotionDto.getBonus());
+        promotion.setStartDate(promotionDto.getStartDate());
+        promotion.setEndDate(promotionDto.getEndDate());
+        promotion.setName(promotionDto.getName().trim());
         return em.merge(promotion);
     }
 
@@ -81,7 +66,7 @@ public class PromotionDaoImpl implements PromotionDao {
 
     @Override
     public List<Promotion> findByNotExpired() {
-        Date day =new Date();
+        Date day = new Date();
         return em.createQuery("SELECT p FROM Promotion p WHERE p.endDate >= :day", Promotion.class)
                 .setParameter("day", day)
                 .getResultList();

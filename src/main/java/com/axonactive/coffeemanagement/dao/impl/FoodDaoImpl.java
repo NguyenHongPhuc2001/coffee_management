@@ -24,7 +24,7 @@ public class FoodDaoImpl implements FoodDao {
     @Override
     public Food findById(Long foodId) {
         return (Food) em.createQuery("SELECT f FROM Food f WHERE f.id = :foodId")
-                .setParameter("foodId",foodId)
+                .setParameter("foodId", foodId)
                 .getSingleResult();
     }
 
@@ -37,45 +37,29 @@ public class FoodDaoImpl implements FoodDao {
     @Override
     public Food create(FoodRequest foodRequest) {
         Food food = new Food();
-        if(foodRequest.getName()==null||foodRequest.getCurrentPrice()==null)
-        {
-            return null;
-        }
-        food.setName(foodRequest.getName());
+        food.setName(foodRequest.getName().trim());
         food.setPrice(foodRequest.getCurrentPrice());
         food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
-        food.setDescription(foodRequest.getDescription());
-        food.setImage(foodRequest.getImage());
-
+        food.setDescription(foodRequest.getDescription().trim());
+        food.setImage(foodRequest.getImage().trim());
         return em.merge(food);
     }
 
     @Override
     public Food update(FoodRequest foodRequest, Long foodId) {
         Food food = findById(foodId);
-        if(foodRequest.getName()!=null){
-            food.setName(foodRequest.getName());
-        }
-        if(foodRequest.getCurrentPrice()!=null){
-            food.setPrice(foodRequest.getCurrentPrice());
-        }
-        if(foodRequest.getCategoryRequest()!=null){
-            food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
-        }
-        if(foodRequest.getDescription()!=null){
-            food.setDescription(foodRequest.getDescription());
-        }
-        if(foodRequest.getImage()!=null){
-            food.setImage(foodRequest.getImage());
-        }
-
+        food.setName(foodRequest.getName().trim());
+        food.setPrice(foodRequest.getCurrentPrice());
+        food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
+        food.setDescription(foodRequest.getDescription().trim());
+        food.setImage(foodRequest.getImage().trim());
         return em.merge(food);
     }
 
     @Override
     public void delete(Long foodId) {
         Food food = findById(foodId);
-        if(food!=null){
+        if (food != null) {
             em.remove(food);
         }
     }
@@ -83,31 +67,31 @@ public class FoodDaoImpl implements FoodDao {
     @Override
     public List<Food> findByCategoryId(Long categoryId) {
         return em.createQuery("SELECT F FROM Food f WHERE f.category.id = :categoryId ORDER BY f.id", Food.class)
-                .setParameter("categoryId",categoryId)
+                .setParameter("categoryId", categoryId)
                 .getResultList();
     }
 
     @Override
     public List<Food> findByName(String name) {
-        return em.createQuery("SELECT f FROM Food f WHERE f.name LIKE :name ORDER BY f.id",Food.class)
-                .setParameter("name","%"+name+"%")
+        return em.createQuery("SELECT f FROM Food f WHERE f.name LIKE :name ORDER BY f.id", Food.class)
+                .setParameter("name", "%" + name + "%")
                 .getResultList();
     }
 
     @Override
     public List<Food> findByCurrentPriceBetween(Double startPrice, Double endPrice) {
-        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice ORDER BY f.id",Food.class)
-                .setParameter("startPrice",startPrice)
-                .setParameter("endPrice",endPrice)
+        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice ORDER BY f.id", Food.class)
+                .setParameter("startPrice", startPrice)
+                .setParameter("endPrice", endPrice)
                 .getResultList();
     }
 
     @Override
     public List<Food> findByCurrentPriceBetweenAndCategory(Double startPrice, Double endPrice, Long categoryId) {
         return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice AND f.category.id = :categoryId", Food.class)
-                .setParameter("startPrice",startPrice)
-                .setParameter("endPrice",endPrice)
-                .setParameter("categoryId",categoryId)
+                .setParameter("startPrice", startPrice)
+                .setParameter("endPrice", endPrice)
+                .setParameter("categoryId", categoryId)
                 .getResultList();
     }
 }

@@ -37,13 +37,10 @@ public class DrinkDaoImpl implements DrinkDao {
     @Override
     public Drink create(DrinkRequest drinkRequest) {
         Drink drink = new Drink();
-        if (drinkRequest.getName() == null || drinkRequest.getCurrentPrice() == null || drinkRequest.getCategoryRequest() == null) {
-            return null;
-        }
-        drink.setName(drinkRequest.getName());
-        drink.setImage(drinkRequest.getImage());
+        drink.setName(drinkRequest.getName().trim());
+        drink.setImage(drinkRequest.getImage().trim());
         drink.setPrice(drinkRequest.getCurrentPrice());
-        drink.setDescription(drinkRequest.getDescription());
+        drink.setDescription(drinkRequest.getDescription().trim());
         drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
         return em.merge(drink);
     }
@@ -51,24 +48,11 @@ public class DrinkDaoImpl implements DrinkDao {
     @Override
     public Drink update(DrinkRequest drinkRequest, Long drinkId) {
         Drink drink = findById(drinkId);
-        if (drink == null) {
-            return null;
-        }
-        if (drinkRequest.getName() != null) {
-            drink.setName(drinkRequest.getName());
-        }
-        if (drinkRequest.getDescription() != null) {
-            drink.setDescription(drinkRequest.getDescription());
-        }
-        if (drinkRequest.getCurrentPrice() != null) {
-            drink.setPrice(drinkRequest.getCurrentPrice());
-        }
-        if (drinkRequest.getImage() != null) {
-            drink.setImage(drinkRequest.getImage());
-        }
-        if (drinkRequest.getCategoryRequest() != null) {
-            drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
-        }
+        drink.setName(drinkRequest.getName().trim());
+        drink.setDescription(drinkRequest.getDescription().trim());
+        drink.setPrice(drinkRequest.getCurrentPrice());
+        drink.setImage(drinkRequest.getImage().trim());
+        drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
         return em.merge(drink);
     }
 

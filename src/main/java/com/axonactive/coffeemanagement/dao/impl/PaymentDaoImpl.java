@@ -19,7 +19,7 @@ public class PaymentDaoImpl implements PaymentDao {
     @Override
     public Payment findById(Long paymentId) {
         return em.createQuery("SELECT p FROM Payment p WHERE p.id = :paymentId", Payment.class)
-                .setParameter("paymentId",paymentId)
+                .setParameter("paymentId", paymentId)
                 .getSingleResult();
     }
 
@@ -32,33 +32,23 @@ public class PaymentDaoImpl implements PaymentDao {
     @Override
     public Payment create(PaymentDto paymentDto) {
         Payment payment = new Payment();
-        if(paymentDto.getName()==null){
-            return null;
-        }
-        payment.setName(paymentDto.getName());
-        payment.setImage(paymentDto.getImage());
+        payment.setName(paymentDto.getName().trim());
+        payment.setImage(paymentDto.getImage().trim());
         return em.merge(payment);
     }
 
     @Override
     public Payment update(PaymentDto paymentDto, Long paymentId) {
         Payment payment = findById(paymentId);
-        if(payment==null){
-            return null;
-        }
-        if(paymentDto.getName()!=null){
-            payment.setName(paymentDto.getName());
-        }
-        if(paymentDto.getImage()!=null){
-            payment.setImage(paymentDto.getImage());
-        }
+        payment.setName(paymentDto.getName().trim());
+        payment.setImage(paymentDto.getImage().trim());
         return em.merge(payment);
     }
 
     @Override
     public void delete(Long paymentId) {
         Payment payment = findById(paymentId);
-        if(payment!=null){
+        if (payment != null) {
             em.remove(payment);
         }
     }

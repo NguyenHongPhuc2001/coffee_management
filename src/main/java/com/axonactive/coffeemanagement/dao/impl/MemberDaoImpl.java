@@ -19,7 +19,7 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public List<Member> findAll() {
-        return em.createQuery("SELECT m FROM Member m")
+        return em.createQuery("SELECT m FROM Member m", Member.class)
                 .getResultList();
     }
 
@@ -36,8 +36,8 @@ public class MemberDaoImpl implements MemberDao {
         if (memberDto.getName() == null || memberDto.getPhone() == null) {
             return null;
         }
-        member.setPhone(memberDto.getPhone());
-        member.setName(memberDto.getName());
+        member.setPhone(memberDto.getPhone().trim());
+        member.setName(memberDto.getName().trim());
         member.setBonus(0);
         return em.merge(member);
     }
@@ -45,18 +45,9 @@ public class MemberDaoImpl implements MemberDao {
     @Override
     public Member update(MemberDto memberDto, Long memberId) {
         Member member = findById(memberId);
-        if (member == null) {
-            return null;
-        }
-        if (memberDto.getBonus() != null) {
-            member.setBonus(memberDto.getBonus());
-        }
-        if (memberDto.getPhone() != null) {
-            member.setPhone(memberDto.getPhone());
-        }
-        if (memberDto.getName() != null) {
-            member.setName(memberDto.getName());
-        }
+        member.setBonus(memberDto.getBonus());
+        member.setPhone(memberDto.getPhone().trim());
+        member.setName(memberDto.getName().trim());
         return em.merge(member);
     }
 

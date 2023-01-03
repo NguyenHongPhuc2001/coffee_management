@@ -20,8 +20,8 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Role create(RoleDto roleDto) {
         Role role = new Role();
-        role.setName(roleDto.getName());
-        role.setDescription(roleDto.getDescription());
+        role.setName(roleDto.getName().trim());
+        role.setDescription(roleDto.getDescription().trim());
         return em.merge(role);
     }
 
@@ -34,8 +34,8 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Role update(RoleDto roleDto, Long roleId) {
         Role role = findById(roleId);
-        role.setName(roleDto.getName());
-        role.setDescription(roleDto.getDescription());
+        role.setName(roleDto.getName().trim());
+        role.setDescription(roleDto.getDescription().trim());
         return em.merge(role);
     }
 
@@ -46,8 +46,6 @@ public class RoleDaoImpl implements RoleDao {
             em.remove(role);
         }
     }
-
-
 
     @Override
     public List<Role> findAll() {
