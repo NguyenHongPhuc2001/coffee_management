@@ -5,6 +5,7 @@ import com.axonactive.coffeemanagement.service.MemberService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,7 @@ public class MemberController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(MemberRequest memberRequest) {
+    public Response create(@Valid MemberRequest memberRequest) {
         return Response.ok().entity(memberService.create(memberRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -49,7 +50,7 @@ public class MemberController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(MemberRequest memberRequest, @PathParam("id") Long id) {
+    public Response update(@Valid MemberRequest memberRequest, @PathParam("id") Long id) {
         return Response.ok().entity(memberService.update(memberRequest, id)).status(Response.Status.OK).build();
     }
 

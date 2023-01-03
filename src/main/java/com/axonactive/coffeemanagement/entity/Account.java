@@ -21,9 +21,9 @@ public class Account {
     @Column(name = "account_id")
     private Long id;
 
-    @Column(length = 100, nullable = false, unique = true)
+    @Column(length = 50, nullable = false, unique = true)
     @NotNull(message = "The username can't be null !!!")
-    @Size(max = 100)
+    @Size(max = 50)
     private String username;
 
     @Column( length = 50, nullable = false)

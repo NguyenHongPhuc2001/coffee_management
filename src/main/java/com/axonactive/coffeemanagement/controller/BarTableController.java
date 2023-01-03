@@ -6,6 +6,7 @@ import com.axonactive.coffeemanagement.utils.Enum.BarTableStatusEnum;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -43,7 +44,7 @@ public class BarTableController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(BarTableRequest barTableRequest) {
+    public Response create(@Valid BarTableRequest barTableRequest) {
         return Response.ok().entity(barTableService.create(barTableRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -52,7 +53,7 @@ public class BarTableController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(BarTableRequest barTableRequest, @PathParam("id") Long id) {
+    public Response update(@Valid BarTableRequest barTableRequest, @PathParam("id") Long id) {
         return Response.ok().entity(barTableService.update(barTableRequest, id)).status(Response.Status.OK).build();
     }
 

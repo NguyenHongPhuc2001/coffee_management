@@ -13,8 +13,6 @@ public class DrinkDto {
 
     private Double currentPrice;
 
-    private Double oldPrice;
-
     private String image;
 
     private String description;

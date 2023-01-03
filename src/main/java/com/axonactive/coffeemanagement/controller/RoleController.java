@@ -6,6 +6,7 @@ import com.axonactive.coffeemanagement.service.RoleService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -35,7 +36,7 @@ public class RoleController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(RoleRequest roleRequest) {
+    public Response create(@Valid RoleRequest roleRequest) {
         return Response.ok().entity(roleService.create(roleRequest)).status(Response.Status.CREATED).build();
     }
 

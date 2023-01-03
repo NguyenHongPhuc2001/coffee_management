@@ -5,6 +5,7 @@ import com.axonactive.coffeemanagement.service.FoodService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,7 @@ public class FoodController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(FoodRequest foodRequest){
+    public Response create(@Valid FoodRequest foodRequest){
         return Response.ok().entity(foodService.create(foodRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -49,7 +50,7 @@ public class FoodController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(FoodRequest foodRequest, @PathParam("id") Long foodId){
+    public Response update(@Valid FoodRequest foodRequest, @PathParam("id") Long foodId){
         return Response.ok().entity(foodService.update(foodRequest,foodId)).status(Response.Status.OK).build();
     }
 

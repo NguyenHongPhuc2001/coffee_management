@@ -5,6 +5,7 @@ import com.axonactive.coffeemanagement.service.AccountService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,7 +33,7 @@ public class AccountController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(AccountRequest accountRequest) {
+    public Response create(@Valid AccountRequest accountRequest) {
         return Response.ok().entity(accountService.create(accountRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -40,7 +41,7 @@ public class AccountController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response changePassword(AccountRequest accountRequest, @PathParam("id") Long id) {
+    public Response changePassword(@Valid AccountRequest accountRequest, @PathParam("id") Long id) {
         return Response.ok().entity(accountService.changePassword(accountRequest, id)).status(Response.Status.OK).build();
     }
 

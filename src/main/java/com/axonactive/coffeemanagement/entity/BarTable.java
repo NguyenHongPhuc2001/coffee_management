@@ -23,12 +23,14 @@ public class BarTable {
     @Column(name = "bar_table_id")
     private Long id;
 
-    @Column( nullable = false, unique = true, length = 2)
+    @Column( nullable = false, unique = true)
     @NotNull(message = "The number of bar_table can't be null !")
+    @Max(100)
     private Integer number;
 
-    @Column(name = "number_of_seat", nullable = false, length = 2)
+    @Column(name = "number_of_seat", nullable = false)
     @NotNull(message = "The numberSeat can't be null !")
+    @Max(4)
     private Integer numberOfSeat;
 
     @Enumerated(EnumType.STRING)

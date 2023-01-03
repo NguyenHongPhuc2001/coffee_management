@@ -6,6 +6,7 @@ import com.axonactive.coffeemanagement.service.CategoryService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -49,7 +50,7 @@ public class CategoryController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(CategoryRequest categoryRequest) {
+    public Response create(@Valid CategoryRequest categoryRequest) {
         return Response.ok().entity(categoryService.create(categoryRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -57,7 +58,7 @@ public class CategoryController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(CategoryRequest categoryRequest, @PathParam("id") Long id) {
+    public Response update(@Valid CategoryRequest categoryRequest, @PathParam("id") Long id) {
         return Response.ok().entity(categoryService.update(categoryRequest, id)).status(Response.Status.OK).build();
     }
 

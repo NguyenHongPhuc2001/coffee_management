@@ -5,6 +5,7 @@ import com.axonactive.coffeemanagement.service.PromotionService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,7 @@ public class PromotionController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(PromotionRequest promotionRequest) {
+    public Response create(@Valid PromotionRequest promotionRequest) {
         return Response.ok().entity(promotionService.create(promotionRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -49,7 +50,7 @@ public class PromotionController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(PromotionRequest promotionRequest, @PathParam("id") Long id) {
+    public Response update(@Valid PromotionRequest promotionRequest, @PathParam("id") Long id) {
         return Response.ok().entity(promotionService.update(promotionRequest, id)).status(Response.Status.OK).build();
     }
 

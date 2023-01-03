@@ -30,10 +30,6 @@ public class Food {
     @NotNull(message = "The current price of food can't be null !")
     private Double currentPrice;
 
-    @Column(nullable = false)
-    @NotNull(message = "The old price of food can't be null !")
-    private Double oldPrice;
-
     private String image;
 
     private String description;
