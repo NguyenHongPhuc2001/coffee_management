@@ -42,8 +42,7 @@ public class DrinkDaoImpl implements DrinkDao {
         }
         drink.setName(drinkRequest.getName());
         drink.setImage(drinkRequest.getImage());
-        drink.setCurrentPrice(drinkRequest.getCurrentPrice());
-        drink.setOldPrice(drinkRequest.getCurrentPrice());
+        drink.setPrice(drinkRequest.getCurrentPrice());
         drink.setDescription(drinkRequest.getDescription());
         drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
         return em.merge(drink);
@@ -62,8 +61,7 @@ public class DrinkDaoImpl implements DrinkDao {
             drink.setDescription(drinkRequest.getDescription());
         }
         if (drinkRequest.getCurrentPrice() != null) {
-            drink.setOldPrice(drink.getCurrentPrice());
-            drink.setCurrentPrice(drinkRequest.getCurrentPrice());
+            drink.setPrice(drinkRequest.getCurrentPrice());
         }
         if (drinkRequest.getImage() != null) {
             drink.setImage(drinkRequest.getImage());

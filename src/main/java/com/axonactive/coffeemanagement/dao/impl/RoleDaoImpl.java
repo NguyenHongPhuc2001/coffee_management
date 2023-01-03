@@ -1,11 +1,10 @@
 package com.axonactive.coffeemanagement.dao.impl;
 
-import com.axonactive.coffeemanagement.controller.request.RoleRequest;
 import com.axonactive.coffeemanagement.dao.RoleDao;
 import com.axonactive.coffeemanagement.entity.Role;
+import com.axonactive.coffeemanagement.service.dto.RoleDto;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -19,27 +18,27 @@ public class RoleDaoImpl implements RoleDao {
     private EntityManager em;
 
     @Override
-    public Role create(RoleRequest roleRequest) {
-        if(roleRequest.getName()==null){
+    public Role create(RoleDto roleDto) {
+        if(roleDto.getName()==null){
             return null;
         }
         Role role = new Role();
-        role.setName(roleRequest.getName());
-        role.setDescription(roleRequest.getDescription());
+        role.setName(roleDto.getName());
+        role.setDescription(roleDto.getDescription());
         return em.merge(role);
     }
 
     @Override
-    public Role update(RoleRequest roleRequest, Long roleId) {
+    public Role update(RoleDto roleDto, Long roleId) {
         Role role = findById(roleId);
         if(role==null){
             return null;
         }
-        if(roleRequest.getName()!=null){
-            role.setName(roleRequest.getName());
+        if(roleDto.getName()!=null){
+            role.setName(roleDto.getName());
         }
-        if(roleRequest.getDescription()!=null){
-            role.setDescription(roleRequest.getDescription());
+        if(roleDto.getDescription()!=null){
+            role.setDescription(roleDto.getDescription());
         }
         return em.merge(role);
     }

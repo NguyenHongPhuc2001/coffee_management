@@ -1,8 +1,6 @@
 package com.axonactive.coffeemanagement.service.impl;
 
-import com.axonactive.coffeemanagement.controller.request.RoleRequest;
 import com.axonactive.coffeemanagement.dao.RoleDao;
-import com.axonactive.coffeemanagement.entity.Role;
 import com.axonactive.coffeemanagement.service.RoleService;
 import com.axonactive.coffeemanagement.service.dto.RoleDto;
 import com.axonactive.coffeemanagement.service.mapper.RoleMapper;
@@ -24,13 +22,13 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public RoleDto create(RoleRequest roleRequest) {
-        return roleMapper.toDto(roleDao.create(roleRequest));
+    public RoleDto create(RoleDto roleDto) {
+        return roleMapper.toDto(roleDao.create(roleDto));
     }
 
     @Override
-    public RoleDto update(RoleRequest roleRequest, Long roleId) {
-        return roleMapper.toDto(roleDao.update(roleRequest,roleId));
+    public RoleDto update(RoleDto roleDto, Long roleId) {
+        return roleMapper.toDto(roleDao.update(roleDto,roleId));
     }
 
     @Override

@@ -24,8 +24,7 @@ public class DrinkMapperImpl implements DrinkMapper {
         DrinkDto drinkDto = new DrinkDto();
 
         drinkDto.setName( drink.getName() );
-        drinkDto.setCurrentPrice( drink.getCurrentPrice() );
-        drinkDto.setOldPrice( drink.getOldPrice() );
+        drinkDto.setCurrentPrice( drink.getPrice() );
         drinkDto.setImage( drink.getImage() );
         drinkDto.setDescription( drink.getDescription() );
 

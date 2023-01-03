@@ -1,8 +1,8 @@
 package com.axonactive.coffeemanagement.dao.impl;
 
-import com.axonactive.coffeemanagement.controller.request.PaymentRequest;
 import com.axonactive.coffeemanagement.dao.PaymentDao;
 import com.axonactive.coffeemanagement.entity.Payment;
+import com.axonactive.coffeemanagement.service.dto.PaymentDto;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,27 +30,27 @@ public class PaymentDaoImpl implements PaymentDao {
     }
 
     @Override
-    public Payment create(PaymentRequest paymentRequest) {
+    public Payment create(PaymentDto paymentDto) {
         Payment payment = new Payment();
-        if(paymentRequest.getName()==null){
+        if(paymentDto.getName()==null){
             return null;
         }
-        payment.setName(paymentRequest.getName());
-        payment.setImage(paymentRequest.getImage());
+        payment.setName(paymentDto.getName());
+        payment.setImage(paymentDto.getImage());
         return em.merge(payment);
     }
 
     @Override
-    public Payment update(PaymentRequest paymentRequest, Long paymentId) {
+    public Payment update(PaymentDto paymentDto, Long paymentId) {
         Payment payment = findById(paymentId);
         if(payment==null){
             return null;
         }
-        if(paymentRequest.getName()!=null){
-            payment.setName(paymentRequest.getName());
+        if(paymentDto.getName()!=null){
+            payment.setName(paymentDto.getName());
         }
-        if(paymentRequest.getImage()!=null){
-            payment.setImage(paymentRequest.getImage());
+        if(paymentDto.getImage()!=null){
+            payment.setImage(paymentDto.getImage());
         }
         return em.merge(payment);
     }

@@ -24,8 +24,7 @@ public class FoodMapperImpl implements FoodMapper {
         FoodDto foodDto = new FoodDto();
 
         foodDto.setName( food.getName() );
-        foodDto.setCurrentPrice( food.getCurrentPrice() );
-        foodDto.setOldPrice( food.getOldPrice() );
+        foodDto.setCurrentPrice( food.getPrice() );
         foodDto.setImage( food.getImage() );
         foodDto.setDescription( food.getDescription() );
 

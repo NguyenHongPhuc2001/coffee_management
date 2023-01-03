@@ -1,8 +1,8 @@
 package com.axonactive.coffeemanagement.dao.impl;
 
-import com.axonactive.coffeemanagement.controller.request.MemberRequest;
 import com.axonactive.coffeemanagement.dao.MemberDao;
 import com.axonactive.coffeemanagement.entity.Member;
+import com.axonactive.coffeemanagement.service.dto.MemberDto;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,31 +31,31 @@ public class MemberDaoImpl implements MemberDao {
     }
 
     @Override
-    public Member create(MemberRequest memberRequest) {
+    public Member create(MemberDto memberDto) {
         Member member = new Member();
-        if (memberRequest.getName() == null || memberRequest.getPhone() == null) {
+        if (memberDto.getName() == null || memberDto.getPhone() == null) {
             return null;
         }
-        member.setPhone(memberRequest.getPhone());
-        member.setName(memberRequest.getName());
+        member.setPhone(memberDto.getPhone());
+        member.setName(memberDto.getName());
         member.setBonus(0);
         return em.merge(member);
     }
 
     @Override
-    public Member update(MemberRequest memberRequest, Long memberId) {
+    public Member update(MemberDto memberDto, Long memberId) {
         Member member = findById(memberId);
         if (member == null) {
             return null;
         }
-        if (memberRequest.getBonus() != null) {
-            member.setBonus(memberRequest.getBonus());
+        if (memberDto.getBonus() != null) {
+            member.setBonus(memberDto.getBonus());
         }
-        if (memberRequest.getPhone() != null) {
-            member.setPhone(memberRequest.getPhone());
+        if (memberDto.getPhone() != null) {
+            member.setPhone(memberDto.getPhone());
         }
-        if (memberRequest.getName() != null) {
-            member.setName(memberRequest.getName());
+        if (memberDto.getName() != null) {
+            member.setName(memberDto.getName());
         }
         return em.merge(member);
     }

@@ -1,6 +1,5 @@
 package com.axonactive.coffeemanagement.service.impl;
 
-import com.axonactive.coffeemanagement.controller.request.MemberRequest;
 import com.axonactive.coffeemanagement.dao.MemberDao;
 import com.axonactive.coffeemanagement.service.MemberService;
 import com.axonactive.coffeemanagement.service.dto.MemberDto;
@@ -30,13 +29,13 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberDto create(MemberRequest memberRequest) {
-        return memberMapper.toDto(memberDao.create(memberRequest));
+    public MemberDto create(MemberDto memberDto) {
+        return memberMapper.toDto(memberDao.create(memberDto));
     }
 
     @Override
-    public MemberDto update(MemberRequest memberRequest, Long memberId) {
-        return memberMapper.toDto(memberDao.update(memberRequest, memberId));
+    public MemberDto update(MemberDto memberDto, Long memberId) {
+        return memberMapper.toDto(memberDao.update(memberDto, memberId));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.axonactive.coffeemanagement.controller;
 
-import com.axonactive.coffeemanagement.controller.request.PromotionRequest;
 import com.axonactive.coffeemanagement.service.PromotionService;
 
 import javax.ejb.Stateless;
@@ -9,7 +8,6 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Date;
 
 @Stateless
 @Path(value = PromotionController.PATH)

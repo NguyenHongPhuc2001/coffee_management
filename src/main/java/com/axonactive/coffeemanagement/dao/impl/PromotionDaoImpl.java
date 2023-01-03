@@ -1,13 +1,12 @@
 package com.axonactive.coffeemanagement.dao.impl;
 
-import com.axonactive.coffeemanagement.controller.request.PromotionRequest;
 import com.axonactive.coffeemanagement.dao.PromotionDao;
 import com.axonactive.coffeemanagement.entity.Promotion;
+import com.axonactive.coffeemanagement.service.dto.PromotionDto;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -33,41 +32,41 @@ public class PromotionDaoImpl implements PromotionDao {
     }
 
     @Override
-    public Promotion create(PromotionRequest promotionRequest) {
+    public Promotion create(PromotionDto promotionDto) {
         Promotion promotion = new Promotion();
-        if (promotionRequest.getPromotionValue() == null || promotionRequest.getBonus() == null
-                || promotionRequest.getPromotionValue() == 0 || promotionRequest.getName() == null ||
-                promotionRequest.getStartDate() == null || promotionRequest.getEndDate() == null) {
+        if (promotionDto.getPromotionValue() == null || promotionDto.getBonus() == null
+                || promotionDto.getPromotionValue() == 0 || promotionDto.getName() == null ||
+                promotionDto.getStartDate() == null || promotionDto.getEndDate() == null) {
             return null;
         }
-        promotion.setPromotionValue(promotionRequest.getPromotionValue());
-        promotion.setBonus(promotionRequest.getBonus());
-        promotion.setStartDate(promotionRequest.getStartDate());
-        promotion.setEndDate(promotionRequest.getEndDate());
-        promotion.setName(promotionRequest.getName());
+        promotion.setPromotionValue(promotionDto.getPromotionValue());
+        promotion.setBonus(promotionDto.getBonus());
+        promotion.setStartDate(promotionDto.getStartDate());
+        promotion.setEndDate(promotionDto.getEndDate());
+        promotion.setName(promotionDto.getName());
         return em.merge(promotion);
     }
 
     @Override
-    public Promotion update(PromotionRequest promotionRequest, Long promotionId) {
+    public Promotion update(PromotionDto promotionDto, Long promotionId) {
         Promotion promotion = findById(promotionId);
         if (promotion == null) {
             return null;
         }
-        if (promotionRequest.getPromotionValue() != null) {
-            promotion.setPromotionValue(promotionRequest.getPromotionValue());
+        if (promotionDto.getPromotionValue() != null) {
+            promotion.setPromotionValue(promotionDto.getPromotionValue());
         }
-        if (promotionRequest.getBonus() != null) {
-            promotion.setBonus(promotionRequest.getBonus());
+        if (promotionDto.getBonus() != null) {
+            promotion.setBonus(promotionDto.getBonus());
         }
-        if (promotionRequest.getStartDate() != null) {
-            promotion.setStartDate(promotionRequest.getStartDate());
+        if (promotionDto.getStartDate() != null) {
+            promotion.setStartDate(promotionDto.getStartDate());
         }
-        if (promotionRequest.getEndDate() != null) {
-            promotion.setEndDate(promotionRequest.getEndDate());
+        if (promotionDto.getEndDate() != null) {
+            promotion.setEndDate(promotionDto.getEndDate());
         }
-        if (promotionRequest.getName() != null) {
-            promotion.setName(promotionRequest.getName());
+        if (promotionDto.getName() != null) {
+            promotion.setName(promotionDto.getName());
         }
         return em.merge(promotion);
     }

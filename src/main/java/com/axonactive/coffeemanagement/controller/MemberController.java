@@ -1,6 +1,5 @@
 package com.axonactive.coffeemanagement.controller;
 
-import com.axonactive.coffeemanagement.controller.request.MemberRequest;
 import com.axonactive.coffeemanagement.service.MemberService;
 
 import javax.ejb.Stateless;

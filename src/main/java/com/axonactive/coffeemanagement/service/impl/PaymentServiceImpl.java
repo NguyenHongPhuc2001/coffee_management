@@ -1,6 +1,5 @@
 package com.axonactive.coffeemanagement.service.impl;
 
-import com.axonactive.coffeemanagement.controller.request.PaymentRequest;
 import com.axonactive.coffeemanagement.dao.PaymentDao;
 import com.axonactive.coffeemanagement.service.PaymentService;
 import com.axonactive.coffeemanagement.service.dto.PaymentDto;
@@ -29,13 +28,13 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentDto create(PaymentRequest paymentRequest) {
-        return paymentMapper.toDto(paymentDao.create(paymentRequest));
+    public PaymentDto create(PaymentDto paymentDto) {
+        return paymentMapper.toDto(paymentDao.create(paymentDto));
     }
 
     @Override
-    public PaymentDto update(PaymentRequest paymentRequest, Long paymentId) {
-        return paymentMapper.toDto(paymentDao.update(paymentRequest,paymentId));
+    public PaymentDto update(PaymentDto paymentDto, Long paymentId) {
+        return paymentMapper.toDto(paymentDao.update(paymentDto,paymentId));
     }
 
     @Override

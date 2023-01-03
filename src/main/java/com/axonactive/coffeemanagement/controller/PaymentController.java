@@ -1,6 +1,5 @@
 package com.axonactive.coffeemanagement.controller;
 
-import com.axonactive.coffeemanagement.controller.request.PaymentRequest;
 import com.axonactive.coffeemanagement.service.PaymentService;
 
 import javax.ejb.Stateless;

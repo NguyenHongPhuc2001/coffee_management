@@ -1,7 +1,6 @@
 package com.axonactive.coffeemanagement.controller;
 
 
-import com.axonactive.coffeemanagement.controller.request.RoleRequest;
 import com.axonactive.coffeemanagement.service.RoleService;
 
 import javax.ejb.Stateless;

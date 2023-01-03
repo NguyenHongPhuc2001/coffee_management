@@ -1,7 +1,6 @@
 package com.axonactive.coffeemanagement.controller;
 
 import com.axonactive.coffeemanagement.controller.request.CategoryRequest;
-import com.axonactive.coffeemanagement.controller.request.PromotionRequest;
 import com.axonactive.coffeemanagement.service.CategoryService;
 
 import javax.ejb.Stateless;

@@ -3,7 +3,6 @@ package com.axonactive.coffeemanagement.dao.impl;
 import com.axonactive.coffeemanagement.controller.request.FoodRequest;
 import com.axonactive.coffeemanagement.dao.CategoryDao;
 import com.axonactive.coffeemanagement.dao.FoodDao;
-import com.axonactive.coffeemanagement.entity.Category;
 import com.axonactive.coffeemanagement.entity.Food;
 
 import javax.ejb.Stateless;
@@ -43,8 +42,7 @@ public class FoodDaoImpl implements FoodDao {
             return null;
         }
         food.setName(foodRequest.getName());
-        food.setCurrentPrice(foodRequest.getCurrentPrice());
-        food.setOldPrice(foodRequest.getCurrentPrice());
+        food.setPrice(foodRequest.getCurrentPrice());
         food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
         food.setDescription(foodRequest.getDescription());
         food.setImage(foodRequest.getImage());
@@ -59,10 +57,7 @@ public class FoodDaoImpl implements FoodDao {
             food.setName(foodRequest.getName());
         }
         if(foodRequest.getCurrentPrice()!=null){
-            food.setCurrentPrice(foodRequest.getCurrentPrice());
-        }
-        if(foodRequest.getOldPrice() !=null){
-            food.setOldPrice(foodRequest.getOldPrice());
+            food.setPrice(foodRequest.getCurrentPrice());
         }
         if(foodRequest.getCategoryRequest()!=null){
             food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));

@@ -1,15 +1,14 @@
 package com.axonactive.coffeemanagement.service.impl;
 
-import com.axonactive.coffeemanagement.controller.request.PromotionRequest;
 import com.axonactive.coffeemanagement.dao.PromotionDao;
 import com.axonactive.coffeemanagement.service.PromotionService;
 import com.axonactive.coffeemanagement.service.dto.PromotionDto;
+import com.axonactive.coffeemanagement.service.dto.RoleDto;
 import com.axonactive.coffeemanagement.service.mapper.PromotionMapper;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -32,13 +31,13 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
     @Override
-    public PromotionDto create(PromotionRequest promotionRequest) {
-        return promotionMapper.toDto(promotionDao.create(promotionRequest));
+    public PromotionDto create(PromotionDto promotionDto) {
+        return promotionMapper.toDto(promotionDao.create(promotionDto));
     }
 
     @Override
-    public PromotionDto update(PromotionRequest promotionRequest, Long promotionId) {
-        return promotionMapper.toDto(promotionDao.update(promotionRequest, promotionId));
+    public PromotionDto update(PromotionDto promotionDto, Long promotionId) {
+        return promotionMapper.toDto(promotionDao.update(promotionDto, promotionId));
     }
 
     @Override

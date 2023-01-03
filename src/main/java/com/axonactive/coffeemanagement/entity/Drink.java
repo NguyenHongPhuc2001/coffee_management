@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 @Data
@@ -28,7 +27,7 @@ public class Drink {
 
     @Column(nullable = false)
     @NotNull(message = "The current price of drink can't be null !")
-    private Double currentPrice;
+    private Double price;
 
     private String image;
 
