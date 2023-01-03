@@ -25,7 +25,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
     @Override
     public List<Payment> findAll() {
-        return em.createQuery("SELECT p FROM Payment p")
+        return em.createQuery("SELECT p FROM Payment p", Payment.class)
                 .getResultList();
     }
 

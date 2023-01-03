@@ -41,7 +41,7 @@ public class AccountController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response changePassword(@Valid AccountRequest accountRequest, @PathParam("id") Long id) {
+    public Response changePassword(AccountRequest accountRequest, @PathParam("id") Long id) {
         return Response.ok().entity(accountService.changePassword(accountRequest, id)).status(Response.Status.OK).build();
     }
 

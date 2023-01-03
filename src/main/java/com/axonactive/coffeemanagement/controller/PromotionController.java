@@ -1,6 +1,7 @@
 package com.axonactive.coffeemanagement.controller;
 
 import com.axonactive.coffeemanagement.service.PromotionService;
+import com.axonactive.coffeemanagement.service.dto.PromotionDto;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -40,7 +41,7 @@ public class PromotionController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(@Valid PromotionRequest promotionRequest) {
+    public Response create(@Valid PromotionDto promotionRequest) {
         return Response.ok().entity(promotionService.create(promotionRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -48,7 +49,7 @@ public class PromotionController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(@Valid PromotionRequest promotionRequest, @PathParam("id") Long id) {
+    public Response update(@Valid PromotionDto promotionRequest, @PathParam("id") Long id) {
         return Response.ok().entity(promotionService.update(promotionRequest, id)).status(Response.Status.OK).build();
     }
 

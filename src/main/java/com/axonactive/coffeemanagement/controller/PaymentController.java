@@ -1,6 +1,7 @@
 package com.axonactive.coffeemanagement.controller;
 
 import com.axonactive.coffeemanagement.service.PaymentService;
+import com.axonactive.coffeemanagement.service.dto.PaymentDto;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,7 +34,7 @@ public class PaymentController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(@Valid PaymentRequest paymentRequest) {
+    public Response create(@Valid PaymentDto paymentRequest) {
         return Response.ok().entity(paymentService.create(paymentRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -41,7 +42,7 @@ public class PaymentController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(@Valid PaymentRequest paymentRequest, @PathParam("id") Long id) {
+    public Response update(@Valid PaymentDto paymentRequest, @PathParam("id") Long id) {
         return Response.ok().entity(paymentService.update(paymentRequest, id)).status(Response.Status.OK).build();
     }
 

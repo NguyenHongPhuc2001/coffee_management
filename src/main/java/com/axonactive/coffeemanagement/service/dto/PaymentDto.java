@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentDto {
+
     @NotNull(message = "The payment name can't be null !!!")
     @Size(max = 120)
     private String name;

@@ -2,6 +2,7 @@ package com.axonactive.coffeemanagement.controller;
 
 
 import com.axonactive.coffeemanagement.service.RoleService;
+import com.axonactive.coffeemanagement.service.dto.RoleDto;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -35,7 +36,7 @@ public class RoleController {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(@Valid RoleRequest roleRequest) {
+    public Response create(@Valid RoleDto roleRequest) {
         return Response.ok().entity(roleService.create(roleRequest)).status(Response.Status.CREATED).build();
     }
 
@@ -44,7 +45,7 @@ public class RoleController {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public Response update(RoleRequest roleRequest, @PathParam("id") Long id) {
+    public Response update(@Valid RoleDto roleRequest, @PathParam("id") Long id) {
         return Response.ok().entity(roleService.update(roleRequest, id)).status(Response.Status.OK).build();
     }
 

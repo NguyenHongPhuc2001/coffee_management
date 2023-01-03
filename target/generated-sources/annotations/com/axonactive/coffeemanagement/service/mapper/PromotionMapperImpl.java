@@ -9,7 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-01T23:28:28+0700",
+    date = "2023-01-03T23:50:05+0700",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.17 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -28,7 +28,6 @@ public class PromotionMapperImpl implements PromotionMapper {
         promotionDto.setPromotionValue( promotion.getPromotionValue() );
         promotionDto.setStartDate( promotion.getStartDate() );
         promotionDto.setEndDate( promotion.getEndDate() );
-        promotionDto.setUpdatedDate( promotion.getUpdatedDate() );
 
         return promotionDto;
     }

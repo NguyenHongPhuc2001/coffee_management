@@ -2,10 +2,12 @@ package com.axonactive.coffeemanagement.dao.impl;
 
 import com.axonactive.coffeemanagement.controller.request.AccountRequest;
 import com.axonactive.coffeemanagement.dao.AccountDao;
+import com.axonactive.coffeemanagement.dao.RoleDao;
 import com.axonactive.coffeemanagement.entity.Account;
 import com.axonactive.coffeemanagement.entity.Role;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -15,7 +17,11 @@ import java.util.List;
 public class AccountDaoImpl implements AccountDao {
 
     @PersistenceContext(name = "coffee_management")
+
     EntityManager em;
+
+    @Inject
+    private RoleDao roleDao;
 
     @Override
     public Account findById(Long accountId) {
@@ -26,21 +32,16 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public List<Account> findAll() {
-        return em.createQuery("SELECT a FROM Account a")
+        return em.createQuery("SELECT a FROM Account a", Account.class)
                 .getResultList();
     }
 
     @Override
     public Account create(AccountRequest accountRequest) {
         Account account = new Account();
-        if(accountRequest.getUsername()==null || accountRequest.getPassword()==null || accountRequest.getRoleId()==null){
-            return null;
-        }
         account.setUsername(accountRequest.getUsername());
         account.setPassword(accountRequest.getPassword());
-        Role role = em.createQuery("SELECT r FROM Role r WHERE r.id = :roleId", Role.class)
-                .setParameter("roleId",accountRequest.getRoleId())
-                .getSingleResult();
+        Role role = roleDao.findById(accountRequest.getRoleId());
         account.setRole(role);
         return em.merge(account);
     }
@@ -48,19 +49,14 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public Account changePassword(AccountRequest accountRequest, Long accountId) {
         Account account = findById(accountId);
-        if(account==null){
-            return null;
-        }
-        if(accountRequest.getPassword()!=null){
-            account.setPassword(accountRequest.getPassword());
-        }
+        account.setPassword(accountRequest.getPassword());
         return em.merge(account);
     }
 
     @Override
     public void delete(Long accountId) {
         Account account = findById(accountId);
-        if(account!=null){
+        if (account != null) {
             em.remove(account);
         }
     }

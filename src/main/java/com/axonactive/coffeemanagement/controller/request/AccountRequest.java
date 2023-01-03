@@ -21,6 +21,5 @@ public class AccountRequest {
     @Size(max = 50)
     private String password;
 
-    @NotNull(message = "The roleId can't be null !!!")
     private Long roleId;
 }
