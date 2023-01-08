@@ -11,7 +11,7 @@ public class FoodDto {
 
     private String name;
 
-    private Double currentPrice;
+    private Double price;
 
     private String image;
 

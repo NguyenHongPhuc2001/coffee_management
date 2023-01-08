@@ -26,8 +26,9 @@ public class Member {
     @Size(max = 10)
     private String phone;
 
+    @Size(max = 120)
     private String name;
 
-    @Max(500)
+    @Max(value = 500)
     private Integer bonus;
 }

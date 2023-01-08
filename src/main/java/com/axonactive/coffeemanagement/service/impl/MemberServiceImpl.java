@@ -47,4 +47,9 @@ public class MemberServiceImpl implements MemberService {
     public MemberDto findByMemberPhone(String memberPhone) {
         return memberMapper.toDto(memberDao.findByMemberPhone(memberPhone));
     }
+
+    @Override
+    public List<MemberDto> findMembersHavePromotions() {
+        return memberMapper.toDtos(memberDao.findMembersHavePromotions());
+    }
 }

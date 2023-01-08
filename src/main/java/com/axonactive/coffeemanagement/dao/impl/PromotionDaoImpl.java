@@ -7,6 +7,7 @@ import com.axonactive.coffeemanagement.service.dto.PromotionDto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -69,6 +70,12 @@ public class PromotionDaoImpl implements PromotionDao {
         Date day = new Date();
         return em.createQuery("SELECT p FROM Promotion p WHERE p.endDate >= :day", Promotion.class)
                 .setParameter("day", day)
+                .getResultList();
+    }
+
+    @Override
+    public List<Promotion> findPromotionsHaveUsed() {
+        return em.createQuery("SELECT p FROM Promotion p INNER JOIN Bill b ON p.id = b.promotion.id GROUP BY p ORDER BY p ASC", Promotion.class)
                 .getResultList();
     }
 }

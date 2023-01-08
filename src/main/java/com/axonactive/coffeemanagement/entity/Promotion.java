@@ -12,6 +12,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -40,12 +41,12 @@ public class Promotion {
 
     @CreationTimestamp
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @UpdateTimestamp
     @Column(name = "updated_date")
-    private Date updatedDate;
+    private LocalDate updatedDate;
 }

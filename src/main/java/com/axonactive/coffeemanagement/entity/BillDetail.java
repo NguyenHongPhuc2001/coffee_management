@@ -29,6 +29,15 @@ public class BillDetail {
     @NotNull(message = "The total in billDetail can't be null !")
     private Double total;
 
+
+    @ManyToOne
+    @JoinColumn(name = "food_id")
+    private Food food;
+
+    @ManyToOne
+    @JoinColumn(name = "drink_id")
+    private Drink drink;
+
     @ManyToOne
     @JoinColumn(name = "bill_id")
     @JsonBackReference

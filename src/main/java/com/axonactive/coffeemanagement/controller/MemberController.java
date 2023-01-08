@@ -61,4 +61,12 @@ public class MemberController {
         return Response.ok().status(Response.Status.OK).build();
     }
 
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/promotions")
+    public Response getMembersHavePromotion(){
+        return Response.ok().entity(memberService.findMembersHavePromotions()).build();
+    }
+
 }

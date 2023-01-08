@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,17 +25,18 @@ public class Bill {
     @Column(name = "bill_id")
     private Long id;
 
-    @Column(nullable = false)
-    @NotNull(message = "The total of bill can't be null !")
     private Double total;
+
+    @Column(name = "actual_received")
+    private Double actualReceived;
 
     @Column(name = "created_date")
     @CreationTimestamp
-    private Date createdDate;
+    private LocalDate createdDate;
 
     @Column(name = "updated_date")
     @UpdateTimestamp
-    private Date updatedDate;
+    private LocalDate updatedDate;
 
     @Enumerated(EnumType.STRING)
     private BillStatusEnum status;

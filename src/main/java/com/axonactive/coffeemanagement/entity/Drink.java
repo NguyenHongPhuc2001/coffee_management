@@ -33,10 +33,8 @@ public class Drink {
 
     private String description;
 
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     @JsonBackReference
     private Category category;
-
 }

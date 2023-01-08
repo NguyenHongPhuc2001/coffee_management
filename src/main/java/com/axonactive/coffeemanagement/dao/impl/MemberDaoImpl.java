@@ -70,4 +70,10 @@ public class MemberDaoImpl implements MemberDao {
             return member;
         }
     }
+
+    @Override
+    public List<Member> findMembersHavePromotions() {
+        return em.createQuery("SELECT m FROM Member m INNER JOIN Promotion p ON m.bonus >= p.bonus GROUP BY m ORDER BY m ASC", Member.class)
+                .getResultList();
+    }
 }

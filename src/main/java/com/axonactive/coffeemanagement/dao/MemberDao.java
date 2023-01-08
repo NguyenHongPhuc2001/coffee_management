@@ -12,4 +12,6 @@ public interface MemberDao {
     Member update(MemberDto memberDto, Long memberId);
     void delete(Long memberId);
     Member findByMemberPhone(String memberPhone);
+
+    List<Member> findMembersHavePromotions();
 }

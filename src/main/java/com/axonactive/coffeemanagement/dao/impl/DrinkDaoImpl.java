@@ -39,7 +39,7 @@ public class DrinkDaoImpl implements DrinkDao {
         Drink drink = new Drink();
         drink.setName(drinkRequest.getName().trim());
         drink.setImage(drinkRequest.getImage().trim());
-        drink.setPrice(drinkRequest.getCurrentPrice());
+        drink.setPrice(drinkRequest.getPrice());
         drink.setDescription(drinkRequest.getDescription().trim());
         drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
         return em.merge(drink);
@@ -50,7 +50,7 @@ public class DrinkDaoImpl implements DrinkDao {
         Drink drink = findById(drinkId);
         drink.setName(drinkRequest.getName().trim());
         drink.setDescription(drinkRequest.getDescription().trim());
-        drink.setPrice(drinkRequest.getCurrentPrice());
+        drink.setPrice(drinkRequest.getPrice());
         drink.setImage(drinkRequest.getImage().trim());
         drink.setCategory(categoryDao.findById(drinkRequest.getCategoryRequest().getId()));
         return em.merge(drink);
@@ -80,7 +80,7 @@ public class DrinkDaoImpl implements DrinkDao {
 
     @Override
     public List<Drink> findByCurrentPriceBetween(Double startPrice, Double endPrice) {
-        return em.createQuery("SELECT d FROM Drink d WHERE d.currentPrice >= :startPrice AND d.currentPrice <= :endPrice", Drink.class)
+        return em.createQuery("SELECT d FROM Drink d WHERE d.price >= :startPrice AND d.price <= :endPrice", Drink.class)
                 .setParameter("startPrice", startPrice)
                 .setParameter("endPrice", endPrice)
                 .getResultList();
@@ -88,7 +88,7 @@ public class DrinkDaoImpl implements DrinkDao {
 
     @Override
     public List<Drink> findByCurrentPriceBetweenAndCategory(Double startPrice, Double endPrice, Long categoryId) {
-        return em.createQuery("SELECT d FROM Drink d WHERE d.currentPrice >= :startPrice AND d.currentPrice <= :endPrice AND d.category.id = :categoryId", Drink.class)
+        return em.createQuery("SELECT d FROM Drink d WHERE d.price >= :startPrice AND d.price <= :endPrice AND d.category.id = :categoryId", Drink.class)
                 .setParameter("startPrice", startPrice)
                 .setParameter("endPrice", endPrice)
                 .setParameter("categoryId", categoryId)

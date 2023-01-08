@@ -18,20 +18,22 @@ public class BillDto {
 
     private Double total;
 
+    private Double actualReceived;
+
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
 
     private BillStatusEnum status;
 
-    private BarTableDto barTableDto;
+    private BarTable barTable;
 
-    private MemberDto memberDto;
+    private Member member;
 
-    private PaymentDto paymentDto;
+    private Payment payment;
 
-    private PromotionDto promotionDto;
+    private Promotion promotion;
 
-    private AccountDto accountDto;
+    private Account account;
 
-    private List<BillDetailDto> billDetailsDto;
+    private List<BillDetail> billDetails;
 }

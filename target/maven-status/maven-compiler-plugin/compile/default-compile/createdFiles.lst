@@ -15,9 +15,13 @@ com\axonactive\coffeemanagement\controller\BillController.class
 com\axonactive\coffeemanagement\controller\DrinkAndCategoryController.class
 com\axonactive\coffeemanagement\service\mapper\CategoryMapper.class
 com\axonactive\coffeemanagement\service\mapper\RoleMapperImpl.class
+com\axonactive\coffeemanagement\utils\provider\CORSFilter.class
 com\axonactive\coffeemanagement\entity\Bill.class
+com\axonactive\coffeemanagement\service\mapper\BillMapperImpl.class
 com\axonactive\coffeemanagement\service\impl\MemberServiceImpl.class
 com\axonactive\coffeemanagement\service\impl\RoleServiceImpl.class
+com\axonactive\coffeemanagement\service\mapper\BillDetailMapperImpl.class
+com\axonactive\coffeemanagement\utils\provider\ObjectMapperContextResolver.class
 com\axonactive\coffeemanagement\service\PromotionService.class
 com\axonactive\coffeemanagement\service\mapper\BarTableMapper.class
 com\axonactive\coffeemanagement\service\mapper\BarTableMapperImpl.class
@@ -48,6 +52,7 @@ com\axonactive\coffeemanagement\controller\request\BillRequest.class
 com\axonactive\coffeemanagement\dao\impl\CategoryDaoImpl.class
 com\axonactive\coffeemanagement\controller\RestConfiguration.class
 com\axonactive\coffeemanagement\service\mapper\BillMapper.class
+com\axonactive\coffeemanagement\controller\request\BillDetailRequest.class
 com\axonactive\coffeemanagement\service\dto\AccountDto.class
 com\axonactive\coffeemanagement\dao\MemberDao.class
 com\axonactive\coffeemanagement\service\impl\AccountServiceImpl.class

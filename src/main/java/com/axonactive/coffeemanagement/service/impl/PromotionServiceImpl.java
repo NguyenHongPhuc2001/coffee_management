@@ -1,6 +1,7 @@
 package com.axonactive.coffeemanagement.service.impl;
 
 import com.axonactive.coffeemanagement.dao.PromotionDao;
+import com.axonactive.coffeemanagement.entity.Promotion;
 import com.axonactive.coffeemanagement.service.PromotionService;
 import com.axonactive.coffeemanagement.service.dto.PromotionDto;
 import com.axonactive.coffeemanagement.service.dto.RoleDto;
@@ -54,5 +55,10 @@ public class PromotionServiceImpl implements PromotionService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public List<PromotionDto> findPromotionHaveUsed() {
+        return promotionMapper.toDtos(promotionDao.findPromotionsHaveUsed());
     }
 }

@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Stateless
@@ -61,7 +62,9 @@ public class BillDaoImpl implements BillDao {
         if (billRequest.getPromotionId() != null) {
             bill.setPromotion(promotionDao.findById(billRequest.getPromotionId()));
         }
+        bill.setActualReceived(billRequest.getActualReceived());
         bill.setStatus(BillStatusEnum.UNCHECKED);
+        bill.setTotal(0.0);
         return em.merge(bill);
     }
 
@@ -86,6 +89,10 @@ public class BillDaoImpl implements BillDao {
         if (billRequest.getStatus() != null) {
             bill.setStatus(BillStatusEnum.valueOf(billRequest.getStatus().toUpperCase()));
         }
+        if(billRequest.getTotal()!=null || billRequest.getTotal()!=0){
+            bill.setTotal(billRequest.getTotal());
+        }
+        bill.setActualReceived(billRequest.getActualReceived());
         return em.merge(bill);
     }
 
@@ -106,32 +113,48 @@ public class BillDaoImpl implements BillDao {
 
     @Override
     public List<Bill> findByMember(Long memberId) {
-        return null;
+        return em.createQuery("SELECT b FROM Bill b WHERE b.member.id = :memberId", Bill.class)
+                .setParameter("memberId", memberId)
+                .getResultList();
     }
 
     @Override
     public List<Bill> findByPayment(Long paymentId) {
-        return null;
+        return em.createQuery("SELECT b FROM Bill b WHERE b.payment.id = :paymentId", Bill.class)
+                .setParameter("paymentId", paymentId)
+                .getResultList();
     }
 
     @Override
     public List<Bill> findByBarTableAndCreatedDate(Long barTableId, String createdDate) {
-        return null;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return em.createQuery("SELECT b FROM Bill b WHERE b.barTable.id = :barTableId AND b.createdDate = :createdDate", Bill.class)
+                .setParameter("barTableId", barTableId)
+                .setParameter("createdDate", createdDate)
+                .getResultList();
     }
 
     @Override
     public List<Bill> findByStatus(String status) {
-        return null;
+        return em.createQuery("SELECT b FROM Bill b WHERE b.status = :status", Bill.class)
+                .setParameter("status", BillStatusEnum.valueOf(status))
+                .getResultList();
     }
 
     @Override
     public List<Bill> findByTotalAndCreatedDate(Double total, String createdDate) {
-        return null;
+        return em.createQuery("SELECT b FROM Bill b WHERE b.total = :total AND b.createdDate = :createdDate", Bill.class)
+                .setParameter("createdDate", createdDate)
+                .setParameter("total", total)
+                .getResultList();
     }
 
     @Override
     public List<Bill> findByMemberAndCreatedDate(Long memberId, String createdDate) {
-        return null;
+        return em.createQuery("SELECT b FROM Bill b WHERE b.member.id  = :memberId AND b.createdDate = :createdDate", Bill.class)
+                .setParameter("createdDate", createdDate)
+                .setParameter("memberId", memberId)
+                .getResultList();
     }
 
     @Override

@@ -17,7 +17,7 @@ public class FoodRequest {
     private String name;
 
     @NotNull(message = "The current price can't be null !!!")
-    private Double currentPrice;
+    private Double price;
 
     private String image;
 

@@ -59,4 +59,12 @@ public class PromotionController {
         promotionService.delete(id);
         return Response.ok().status(Response.Status.OK).build();
     }
+
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("/used")
+    public Response getPromotionsHaveUsed() {
+        return Response.ok().entity(promotionService.findPromotionHaveUsed()).build();
+    }
 }

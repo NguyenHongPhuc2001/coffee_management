@@ -38,7 +38,7 @@ public class FoodDaoImpl implements FoodDao {
     public Food create(FoodRequest foodRequest) {
         Food food = new Food();
         food.setName(foodRequest.getName().trim());
-        food.setPrice(foodRequest.getCurrentPrice());
+        food.setPrice(foodRequest.getPrice());
         food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
         food.setDescription(foodRequest.getDescription().trim());
         food.setImage(foodRequest.getImage().trim());
@@ -49,7 +49,7 @@ public class FoodDaoImpl implements FoodDao {
     public Food update(FoodRequest foodRequest, Long foodId) {
         Food food = findById(foodId);
         food.setName(foodRequest.getName().trim());
-        food.setPrice(foodRequest.getCurrentPrice());
+        food.setPrice(foodRequest.getPrice());
         food.setCategory(categoryDao.findById(foodRequest.getCategoryRequest().getId()));
         food.setDescription(foodRequest.getDescription().trim());
         food.setImage(foodRequest.getImage().trim());
@@ -80,7 +80,7 @@ public class FoodDaoImpl implements FoodDao {
 
     @Override
     public List<Food> findByCurrentPriceBetween(Double startPrice, Double endPrice) {
-        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice ORDER BY f.id", Food.class)
+        return em.createQuery("SELECT f FROM Food f WHERE f.price >= :startPrice AND f.price <= :endPrice ORDER BY f.id", Food.class)
                 .setParameter("startPrice", startPrice)
                 .setParameter("endPrice", endPrice)
                 .getResultList();
@@ -88,7 +88,7 @@ public class FoodDaoImpl implements FoodDao {
 
     @Override
     public List<Food> findByCurrentPriceBetweenAndCategory(Double startPrice, Double endPrice, Long categoryId) {
-        return em.createQuery("SELECT f FROM Food f WHERE f.currentPrice >= :startPrice AND f.currentPrice <= :endPrice AND f.category.id = :categoryId", Food.class)
+        return em.createQuery("SELECT f FROM Food f WHERE f.price >= :startPrice AND f.price <= :endPrice AND f.category.id = :categoryId", Food.class)
                 .setParameter("startPrice", startPrice)
                 .setParameter("endPrice", endPrice)
                 .setParameter("categoryId", categoryId)

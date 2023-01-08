@@ -9,7 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-04T00:00:03+0700",
+    date = "2023-01-08T18:49:51+0700",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 11.0.17 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -24,6 +24,7 @@ public class FoodMapperImpl implements FoodMapper {
         FoodDto foodDto = new FoodDto();
 
         foodDto.setName( food.getName() );
+        foodDto.setPrice( food.getPrice() );
         foodDto.setImage( food.getImage() );
         foodDto.setDescription( food.getDescription() );
 

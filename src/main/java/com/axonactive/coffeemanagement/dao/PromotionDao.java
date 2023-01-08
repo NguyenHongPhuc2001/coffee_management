@@ -12,5 +12,5 @@ public interface PromotionDao {
     Promotion update(PromotionDto promotionDto, Long promotionId);
     void delete(Long promotionId);
     List<Promotion> findByNotExpired();
-
+    List<Promotion> findPromotionsHaveUsed();
 }
