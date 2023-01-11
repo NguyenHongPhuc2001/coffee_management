@@ -4,8 +4,6 @@ import com.axonactive.coffeemanagement.controller.request.BillRequest;
 import com.axonactive.coffeemanagement.entity.Bill;
 import com.axonactive.coffeemanagement.entity.Drink;
 import com.axonactive.coffeemanagement.entity.Food;
-import com.axonactive.coffeemanagement.entity.Member;
-import com.axonactive.coffeemanagement.utils.Enum.BillStatusEnum;
 
 import java.util.List;
 
@@ -36,7 +34,7 @@ public interface BillDao {
 
     List<Bill> findByTotalAndPromotionAndCreatedDate(Double total, Long promotionId, String createdDate);
 
-    List<Bill> findByPromotionIsNotExpired(Long promotionId, boolean expired);
+    List<Bill> findByPromotion(Long promotionId);
 
     Double findTotalByCreatedDateAndStatus(String createdDate, String status);
 

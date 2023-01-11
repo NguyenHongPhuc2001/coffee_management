@@ -78,4 +78,16 @@ public class PromotionDaoImpl implements PromotionDao {
         return em.createQuery("SELECT p FROM Promotion p INNER JOIN Bill b ON p.id = b.promotion.id GROUP BY p ORDER BY p ASC", Promotion.class)
                 .getResultList();
     }
+
+    @Override
+    public List<Promotion> findPromotionsByMember(Long memberId) {
+        LocalDate nowDate = LocalDate.now();
+        return em.createQuery("SELECT p FROM Promotion p " +
+                        "INNER JOIN Member m ON m.bonus >= p.bonus " +
+                        "AND m.id = :memberId AND p.endDate >= CURRENT_TIMESTAMP " +
+                        "GROUP BY p " +
+                        "ORDER BY p ASC", Promotion.class)
+                .setParameter("memberId", memberId)
+                .getResultList();
+    }
 }

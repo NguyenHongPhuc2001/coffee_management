@@ -43,4 +43,9 @@ public class BillServiceImpl implements BillService {
     public void delete(Long billId) {
         billDao.delete(billId);
     }
+
+    @Override
+    public List<BillDto> findByPromotion(Long promotionId) {
+        return billMapper.toDtos(billDao.findByPromotion(promotionId));
+    }
 }

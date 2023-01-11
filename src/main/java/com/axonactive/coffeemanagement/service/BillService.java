@@ -15,4 +15,6 @@ public interface BillService {
     BillDto update(BillRequest billRequest, Long billId);
 
     void delete(Long billId);
+
+    List<BillDto> findByPromotion(Long promotionId);
 }

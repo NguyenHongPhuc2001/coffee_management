@@ -13,4 +13,5 @@ public interface PromotionService {
     void delete(Long promotionId);
     List<PromotionDto> findByNotExpired();
     List<PromotionDto> findPromotionHaveUsed();
+    List<PromotionDto> findPromotionsByMember(Long memberId);
 }

@@ -89,7 +89,7 @@ public class BillDaoImpl implements BillDao {
         if (billRequest.getStatus() != null) {
             bill.setStatus(BillStatusEnum.valueOf(billRequest.getStatus().toUpperCase()));
         }
-        if(billRequest.getTotal()!=null || billRequest.getTotal()!=0){
+        if (billRequest.getTotal() != null || billRequest.getTotal() != 0) {
             bill.setTotal(billRequest.getTotal());
         }
         bill.setActualReceived(billRequest.getActualReceived());
@@ -163,8 +163,13 @@ public class BillDaoImpl implements BillDao {
     }
 
     @Override
-    public List<Bill> findByPromotionIsNotExpired(Long promotionId, boolean expired) {
-        return null;
+    public List<Bill> findByPromotion(Long promotionId) {
+        return em.createQuery("SELECT b FROM Bill b INNER JOIN Promotion p " +
+                        "ON b.promotion.id = :promotionId " +
+                        "GROUP BY b " +
+                        "ORDER BY b ASC", Bill.class)
+                .setParameter("promotionId", promotionId)
+                .getResultList();
     }
 
     @Override

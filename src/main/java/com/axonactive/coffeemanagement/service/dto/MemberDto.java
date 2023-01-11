@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,4 +23,6 @@ public class MemberDto {
 
     @Max(value = 500)
     private Integer bonus;
+
+    private List<PromotionDto> promotions;
 }
